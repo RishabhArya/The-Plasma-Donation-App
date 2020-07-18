@@ -107,7 +107,7 @@ public class manageOtp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(manageOtp.this,dummyActivity.class);
+                            Intent intent = new Intent(manageOtp.this,CovidUpdates.class);
                             startActivity(intent);
 
                         } else {
