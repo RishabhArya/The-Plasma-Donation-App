@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Jeewan</string>
+    <string name="terms_of_service_privacy_policy">Terms of Service,Privacy Policy</string>
+    <string name="by_continuing_you_agree_to_our">By Continuing,you agree to our</string>
+    <string name="connect_with_google">Connect With GOOGLE</string>
+    <string name="connect_with_email">Connect With Email</string>
+    <string name="or">OR</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter_your_phone_number_and_we_will_send">Enter your phone number and we will send</string>
+    <string name="an_otp_to_continue">an OTP to Continue</string>
+    <string name="jeewan">Jeewan</string>
+    <string name="_91">+91</string>
+    <string name="generate_otp">Generate OTP</string>
+    <string name="made_in_india_with_9829">Made in India, with ♥</string>
+    <string name="mobile_no">Mobile no.</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign Up/Register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_signup">SignupActivity</string>
 </resources>
