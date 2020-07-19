@@ -1,6 +1,7 @@
 package com.example.jeewan.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class ProfileForm extends AppCompatActivity {
     Set<String> states;
     ActivityProfileFormBinding profileFormBinding;
     HashMap<String, ArrayList<String>> cities;
+    ProfileViewModel profileViewModel;
 
 
 
@@ -70,7 +72,7 @@ public class ProfileForm extends AppCompatActivity {
         profileFormBinding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
             }
         });
 

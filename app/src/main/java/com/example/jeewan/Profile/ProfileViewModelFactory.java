@@ -23,6 +23,8 @@ public class ProfileViewModelFactory implements ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(ProfileViewModel.class)){
             return (T) new ProfileViewModel(name,age,Contact,city,State);
         }
-        return null;
+        else {
+            return null;
+        }
     }
 }
