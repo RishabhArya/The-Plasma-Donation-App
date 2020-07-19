@@ -35,7 +35,7 @@ public class manageOtp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_otp);
+        setContentView(R.layout.authentication_manage_otp);
         Heading = (TextView)findViewById(R.id.textView10);
         phoneNumber = getIntent().getStringExtra("mobile").toString();
         Heading.setText(Heading.getText().toString() + phoneNumber);
@@ -58,22 +58,6 @@ public class manageOtp extends AppCompatActivity {
                 }
             }
         });
-        //Countdown timer
-        final TextView counttime=findViewById(R.id.counttime);
-        new CountDownTimer(50000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                counttime.setText(String.valueOf(counter));
-                counter++;;
-            }
-            @Override
-            public void onFinish() {
-
-                Intent intent = new Intent(manageOtp.this, mainlogin.class);
-                startActivity(intent);
-                finish();
-            }
-        };
     }
 
     private void initateotp() {

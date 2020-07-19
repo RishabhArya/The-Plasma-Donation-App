@@ -30,7 +30,7 @@ public class signup extends AppCompatActivity {
         //getActionBar().setHomeButtonEnabled(true);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.authentication_signup);
         username = (EditText)findViewById(R.id.username_login);
         password = (EditText)findViewById(R.id.password);
         loading = (ProgressBar)findViewById(R.id.loading);

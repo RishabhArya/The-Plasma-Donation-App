@@ -33,6 +33,7 @@ public class mainlogin extends AppCompatActivity {
     EditText phoneNumber;
     Button generateOtp;
     Button email;
+    Button pop;
     CountryCodePicker ccp;
     private FirebaseAuth mAuth;
     @Override
@@ -49,9 +50,11 @@ public class mainlogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainlogin);
+        setContentView(R.layout.authentication_mainlogin);
         getSupportActionBar().hide();
 
+
+        //
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         Signin = (Button) findViewById(R.id.googleSignIn);
@@ -71,9 +74,16 @@ public class mainlogin extends AppCompatActivity {
         generateOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(phoneNumber.getText().toString().isEmpty()){
+                    Toast.makeText(mainlogin.this, "Please Enter Your Phone Number", Toast.LENGTH_SHORT).show();
+                }
+                else if(phoneNumber.getText().toString().length()!=10){
+                    Toast.makeText(mainlogin.this, "Phone Number must be 10 digits", Toast.LENGTH_SHORT).show();
+                }
+                else{
                 Intent intent = new Intent(mainlogin.this, manageOtp.class);
                 intent.putExtra("mobile",ccp.getFullNumberWithPlus().replace(" ",""));
-                startActivity(intent);
+                startActivity(intent);}
             }
         });
         //for email
