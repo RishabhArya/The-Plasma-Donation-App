@@ -64,6 +64,16 @@ public class ProfileForm extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " +cities);
 
+
+
+
+        profileFormBinding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
     }
 
 
