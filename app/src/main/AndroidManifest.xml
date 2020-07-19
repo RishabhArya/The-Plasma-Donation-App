@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jeewan">
 
-<uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,19 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".authentication.loginginscreen"></activity>
-        <activity android:name=".authentication.signup" />
-        <activity android:name=".authentication.manageOtp" />
-        <activity android:name=".covidCases.CovidUpdates"></activity>
-        <activity
-            android:name=".authentication.mainlogin"
-            android:label="home" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Profile.ProfileForm">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".authentication.loginginscreen" />
+        <activity android:name=".authentication.signup" />
+        <activity android:name=".authentication.manageOtp" />
+        <activity android:name=".covidCases.CovidUpdates" />
+        <activity
+            android:name=".authentication.mainlogin"
+            android:label="home" />
+        <activity android:name=".SplashActivity">
+
         </activity>
 
         <meta-data
