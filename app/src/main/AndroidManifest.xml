@@ -4,7 +4,6 @@
 
 <uses-permission android:name="android.permission.INTERNET"/>
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,19 +13,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".authentication.loginginscreen"></activity>
         <activity android:name=".authentication.signup" />
-        <activity android:name=".authentication.manageOtp" />
+        <activity android:name=".authentication.ManageOtp" />
         <activity android:name=".covidCases.CovidUpdates"></activity>
         <activity
-            android:name=".authentication.mainlogin"
+            android:name=".authentication.Mainlogin"
             android:label="home" />
+        <activity android:name=".DonateActivity"></activity>
+        <activity android:name=".RequestActivity" />
         <activity android:name=".SplashActivity">
+>>>>>>> added request and donate layouts
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

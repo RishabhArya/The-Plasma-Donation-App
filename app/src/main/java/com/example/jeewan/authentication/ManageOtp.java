@@ -24,7 +24,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class manageOtp extends AppCompatActivity {
+public class ManageOtp extends AppCompatActivity {
     EditText otp;
     String phoneNumber;
     Button verify;
@@ -36,28 +36,35 @@ public class manageOtp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_otp);
+
         Heading = (TextView)findViewById(R.id.textView10);
         phoneNumber = getIntent().getStringExtra("mobile").toString();
         Heading.setText(Heading.getText().toString() + phoneNumber);
         otp = (EditText)findViewById(R.id.editTextOTP);
         verify = (Button)findViewById(R.id.butVerify);
         mAuth = FirebaseAuth.getInstance();
+
+        //method call to send otp
         initateotp();
+
+        //set on click listener on phone login button to get manually entered code and call method for verification
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(otp.getText().toString().isEmpty()){
-                    Toast.makeText(manageOtp.this, "Please Enter Your OTP", Toast.LENGTH_SHORT).show();
+                //get code entered by user
+                String code = otp.getText().toString().trim();
+                //display error message if code is empty or not valid
+                if (code.isEmpty() || code.length() < 6) {
+                    otp.setError("Enter code");
+                    otp.requestFocus();
+                    return;
                 }
-                else if(otp.getText().toString().length()!=6){
-                    Toast.makeText(manageOtp.this, "Invalid OTP", Toast.LENGTH_SHORT).show();
+                //call method for code verification and signin
+                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid,otp.getText().toString());
+                signInWithPhoneAuthCredential(credential);
                 }
-                else{
-                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid,otp.getText().toString());
-                    signInWithPhoneAuthCredential(credential);
-                }
-            }
         });
+
         //Countdown timer
         final TextView counttime=findViewById(R.id.counttime);
         new CountDownTimer(50000,1000) {
@@ -66,55 +73,67 @@ public class manageOtp extends AppCompatActivity {
                 counttime.setText(String.valueOf(counter));
                 counter++;;
             }
+
             @Override
             public void onFinish() {
-
-                Intent intent = new Intent(manageOtp.this, mainlogin.class);
+                Intent intent = new Intent(ManageOtp.this, Mainlogin.class);
                 startActivity(intent);
                 finish();
             }
         };
     }
 
+    //method to send otp
     private void initateotp() {
+        //get instance of firebase phoneauthprovider and send and verify message
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
+
+                //callback after sending cod
                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    //get otpid after code is sent to user
                     @Override
                     public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
                         otpid = s ;
                     }
-
+                    ////to detect sent code automatically and login
                     @Override
                     public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                        signInWithPhoneAuthCredential(phoneAuthCredential);
+                        String code = phoneAuthCredential.getSmsCode();
+                        if (code != null) {
+                            //set code in edittextotp
+                            otp.setText(code);
+                            //call method for signin with sent code
+                            signInWithPhoneAuthCredential(phoneAuthCredential);
+                        }
                     }
-
+                    //show error message if verification fails
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
 
-                        Toast.makeText(manageOtp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManageOtp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });        // OnVerificationStateChangedCallbacks
 
     }
+    //method to sign in with given credentials
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(manageOtp.this, CovidUpdates.class);
+                            // Sign in success,move to CovidUpdates activity
+                            Intent intent = new Intent(ManageOtp.this, CovidUpdates.class);
                             startActivity(intent);
 
                         } else {
-                            // Sign in failed, display a message and update the UI
-                            Toast.makeText(manageOtp.this, "Sigh In Code Error", Toast.LENGTH_SHORT).show();
+                            // Sign in failed, display error message
+                            Toast.makeText(ManageOtp.this, "Sigh In Code Error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

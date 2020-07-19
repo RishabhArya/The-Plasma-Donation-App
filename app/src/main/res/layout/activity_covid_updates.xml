@@ -139,8 +139,8 @@
 
                 <TextView
                     android:id="@+id/india_confirmed_tvstats"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
@@ -149,8 +149,8 @@
 
                 <TextView
                     android:id="@+id/india_active_tvstats"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
@@ -159,8 +159,8 @@
 
                 <TextView
                     android:id="@+id/india_recovered_tvstats"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
@@ -225,7 +225,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/covidindia_rview"
         android:layout_width="match_parent"
-        android:layout_height="454dp"
+        android:layout_height="462dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
