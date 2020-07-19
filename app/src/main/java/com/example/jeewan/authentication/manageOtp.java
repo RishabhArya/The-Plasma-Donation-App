@@ -1,4 +1,4 @@
-package com.example.jeewan;
+package com.example.jeewan.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jeewan.R;
+import com.example.jeewan.covidCases.CovidUpdates;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -107,7 +109,7 @@ public class manageOtp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(manageOtp.this,CovidUpdates.class);
+                            Intent intent = new Intent(manageOtp.this, CovidUpdates.class);
                             startActivity(intent);
 
                         } else {

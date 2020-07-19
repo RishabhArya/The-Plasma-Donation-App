@@ -1,4 +1,4 @@
-package com.example.jeewan.Networking;
+package com.example.jeewan.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

@@ -1,6 +1,6 @@
-package com.example.jeewan.Networking;
+package com.example.jeewan.api;
 
-import com.example.jeewan.Model.RootCovidStatewiseStats;
+import com.example.jeewan.model.RootCovidStatewiseStats;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

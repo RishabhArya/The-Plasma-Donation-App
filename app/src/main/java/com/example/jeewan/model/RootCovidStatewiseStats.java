@@ -1,6 +1,5 @@
-package com.example.jeewan.Model;
+package com.example.jeewan.model;
 
-import com.example.jeewan.Model.CovidStateWiseStats;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

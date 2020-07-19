@@ -1,4 +1,4 @@
-package com.example.jeewan;
+package com.example.jeewan.covidCases;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.jeewan.Model.CovidStateWiseStats;
-import com.example.jeewan.Model.RootCovidStatewiseStats;
-import com.example.jeewan.Networking.GetCovidStatewiseData;
-import com.example.jeewan.Networking.RetrofitClientInstance;
+import com.example.jeewan.R;
+import com.example.jeewan.model.CovidStateWiseStats;
+import com.example.jeewan.model.RootCovidStatewiseStats;
+import com.example.jeewan.api.GetCovidStatewiseData;
+import com.example.jeewan.api.RetrofitClientInstance;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

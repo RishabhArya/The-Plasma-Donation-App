@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-public class splash extends AppCompatActivity {
+import com.example.jeewan.authentication.mainlogin;
+
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class splash extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(splash.this, mainlogin.class);
+                Intent intent = new Intent(SplashActivity.this, mainlogin.class);
 
                 startActivity(intent);
                 finish();

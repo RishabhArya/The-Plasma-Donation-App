@@ -1,4 +1,4 @@
-package com.example.jeewan;
+package com.example.jeewan.covidCases;
 
 import android.content.Context;
 import android.text.format.DateFormat;
@@ -10,13 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jeewan.Model.CovidStateWiseStats;
+import com.example.jeewan.R;
+import com.example.jeewan.model.CovidStateWiseStats;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class CovidStatewiseAdapter extends RecyclerView.Adapter<CovidStatewiseAdapter.CovidViewHolder> {

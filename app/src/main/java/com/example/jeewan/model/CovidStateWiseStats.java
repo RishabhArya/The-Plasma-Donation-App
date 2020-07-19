@@ -1,4 +1,4 @@
-package com.example.jeewan.Model;
+package com.example.jeewan.model;
 
 import com.google.gson.annotations.SerializedName;
 

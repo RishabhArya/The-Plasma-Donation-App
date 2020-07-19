@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginginscreen">
+    tools:context=".authentication.loginginscreen">
 
     <EditText
         android:id="@+id/username_login"
