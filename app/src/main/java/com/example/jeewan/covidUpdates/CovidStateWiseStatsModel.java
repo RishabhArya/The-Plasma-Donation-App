@@ -1,9 +1,9 @@
-package com.example.jeewan.model;
+package com.example.jeewan.covidUpdates;
 
 import com.google.gson.annotations.SerializedName;
 
 //class to confirm json data into java object with getter and setter methods
-public class CovidStateWiseStats {
+public class CovidStateWiseStatsModel {
     @SerializedName("active")
     private String active;
     @SerializedName("confirmed")
@@ -29,9 +29,9 @@ public class CovidStateWiseStats {
     @SerializedName("statenotes")
     private String statenotes;
 
-    public CovidStateWiseStats(String active, String confirmed, String deaths, String deltaconfirmed,
-                               String deltadeaths, String deltarecovered, String lastupdatedtime, String migratedother,
-                               String recovered, String state, String statecode, String statenotes) {
+    public CovidStateWiseStatsModel(String active, String confirmed, String deaths, String deltaconfirmed,
+                                    String deltadeaths, String deltarecovered, String lastupdatedtime, String migratedother,
+                                    String recovered, String state, String statecode, String statenotes) {
         this.active = active;
         this.confirmed = confirmed;
         this.deaths = deaths;

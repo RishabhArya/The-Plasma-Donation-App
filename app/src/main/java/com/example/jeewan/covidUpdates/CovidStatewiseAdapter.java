@@ -1,4 +1,4 @@
-package com.example.jeewan.covidCases;
+package com.example.jeewan.covidUpdates;
 
 import android.content.Context;
 import android.text.format.DateFormat;
@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jeewan.R;
-import com.example.jeewan.model.CovidStateWiseStats;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,10 +19,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CovidStatewiseAdapter extends RecyclerView.Adapter<CovidStatewiseAdapter.CovidViewHolder> {
-    private List<CovidStateWiseStats> covidstatewiselist;
+    private List<CovidStateWiseStatsModel> covidstatewiselist;
     private Context context;
 
-    public CovidStatewiseAdapter(Context context,List<CovidStateWiseStats> covidstatewiselist)
+    public CovidStatewiseAdapter(Context context,List<CovidStateWiseStatsModel> covidstatewiselist)
     {
         this.context=context;
         this.covidstatewiselist=covidstatewiselist;
@@ -40,7 +39,7 @@ public class CovidStatewiseAdapter extends RecyclerView.Adapter<CovidStatewiseAd
     //to set all the values for each view in recyclerview
     @Override
     public void onBindViewHolder(@NonNull CovidViewHolder holder, int position) {
-        final CovidStateWiseStats statewisedata=covidstatewiselist.get(position);
+        final CovidStateWiseStatsModel statewisedata=covidstatewiselist.get(position);
 
         holder.statename_tv.setText(statewisedata.getState());
         holder.statewise_confirmed_tvstats.setText(statewisedata.getConfirmed());

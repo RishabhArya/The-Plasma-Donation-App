@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jeewan.R;
-import com.example.jeewan.covidCases.CovidUpdates;
+import com.example.jeewan.Profile.ProfileForm;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -128,8 +128,8 @@ public class Mainlogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, move to CovidUpdates class
-                            Intent intent = new Intent(Mainlogin.this, CovidUpdates.class);
+                            // Sign in success, move to ProfileForm activity
+                            Intent intent = new Intent(Mainlogin.this, ProfileForm.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -137,5 +137,11 @@ public class Mainlogin extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //prevent from going back
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
