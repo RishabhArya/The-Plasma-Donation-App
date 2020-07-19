@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jeewan">
 
-<<<<<<< HEAD
 <uses-permission android:name="android.permission.INTERNET"/>
-=======
-    <uses-permission android:name="android.permission.INTERNET"/>
->>>>>>> 64c3419c77ed9104fcb65109c880224928ad8b28
+
 
     <application
         android:allowBackup="true"

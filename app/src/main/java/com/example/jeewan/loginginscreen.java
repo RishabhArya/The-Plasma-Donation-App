@@ -47,7 +47,7 @@ public class loginginscreen extends AppCompatActivity {
                             username.setText("");
                             password.setText("");
                             Toast.makeText(loginginscreen.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(loginginscreen.this, dummyActivity.class);
+                            Intent intent = new Intent(loginginscreen.this, CovidUpdates.class);
                             intent.putExtra("email", mAuth.getCurrentUser().getEmail());
                             intent.putExtra("uid", mAuth.getCurrentUser().getUid());
                             startActivity(intent);
