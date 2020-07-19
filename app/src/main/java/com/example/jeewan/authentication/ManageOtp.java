@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jeewan.R;
-import com.example.jeewan.Profile.ProfileForm;
+import com.example.jeewan.profile.ProfileForm;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
