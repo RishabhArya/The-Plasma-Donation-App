@@ -111,7 +111,7 @@ public class mainlogin extends AppCompatActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Error in getting Information", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, e.getClass().getSimpleName(), Toast.LENGTH_LONG).show();
                 // ...
             }
         }
