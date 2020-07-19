@@ -1,14 +1,16 @@
-package com.example.jeewan;
+package com.example.jeewan.request;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DonateActivity extends AppCompatActivity {
+import com.example.jeewan.R;
+
+public class RequestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donate);
+        setContentView(R.layout.activity_request);
     }
 }

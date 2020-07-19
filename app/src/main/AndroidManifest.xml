@@ -30,8 +30,8 @@
         <activity
             android:name=".authentication.Mainlogin"
             android:label="home" />
-        <activity android:name=".DonateActivity"></activity>
-        <activity android:name=".RequestActivity" />
+        <activity android:name=".donate.DonateActivity"></activity>
+        <activity android:name=".request.RequestActivity" />
         <activity android:name=".SplashActivity">
 
             <intent-filter>
