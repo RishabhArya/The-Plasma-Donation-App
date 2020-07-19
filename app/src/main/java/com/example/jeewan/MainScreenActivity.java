@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.example.jeewan.covidUpdates.CovidUpdateFragment;
 import com.example.jeewan.donate.DonateFragment;
-import com.example.jeewan.profile.ProfileFragment;
+import com.example.jeewan.Profile.ProfileFragment;
 import com.example.jeewan.request.RequestFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

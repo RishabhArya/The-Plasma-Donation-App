@@ -1,4 +1,4 @@
-package com.example.jeewan.profile;
+package com.example.jeewan.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
@@ -8,11 +8,11 @@ public class ProfileViewModelFactory implements ViewModelProvider.Factory {
     String name,age,Contact,city,State;
 
     public ProfileViewModelFactory(String name,String age,String Contact,String city,String State){
-        this.name=name;
-        this.age=age;
-        this.Contact=Contact;
-        this.city=city;
-        this.State=State;
+       this.name=name;
+       this.age=age;
+       this.Contact=Contact;
+       this.city=city;
+       this.State=State;
     }
 
     @NonNull

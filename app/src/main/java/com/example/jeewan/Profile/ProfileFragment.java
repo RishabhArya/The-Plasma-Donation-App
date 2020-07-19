@@ -1,4 +1,4 @@
-package com.example.jeewan.profile;
+package com.example.jeewan.Profile;
 
 import android.os.Bundle;
 

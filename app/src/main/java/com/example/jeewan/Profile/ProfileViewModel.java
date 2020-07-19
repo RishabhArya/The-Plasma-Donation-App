@@ -1,4 +1,4 @@
-package com.example.jeewan.profile;
+package com.example.jeewan.Profile;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -18,13 +18,14 @@ public class ProfileViewModel extends ViewModel {
     }
 
 
+
     MutableLiveData<Boolean> dataPushed=new MutableLiveData<>();
 
     public MutableLiveData<Boolean> getDataPushed() {
-        auth = FirebaseAuth.getInstance();
+        auth=FirebaseAuth.getInstance();
+        
 
 
         return dataPushed;
     }
-
 }

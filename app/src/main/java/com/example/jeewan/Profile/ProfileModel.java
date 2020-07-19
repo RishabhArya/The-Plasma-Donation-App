@@ -1,14 +1,13 @@
-package com.example.jeewan.profile;
+package com.example.jeewan.Profile;
 
-//public class to storing a user's details
 public class ProfileModel {
-    private String name;
-    private String age;
-    private String contact;
-    private String city;
-    private String state;
+    String name;
+    String age;
+    String contact;
+    String city;
+    String state;
 
-    //constructor
+
     public ProfileModel(String name, String age, String contact, String city, String state) {
         this.name = name;
         this.age = age;

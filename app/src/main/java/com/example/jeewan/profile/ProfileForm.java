@@ -1,4 +1,4 @@
-package com.example.jeewan.profile;
+package com.example.jeewan.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.jeewan.R;
 import com.example.jeewan.databinding.ActivityProfileFormBinding;
@@ -60,6 +59,18 @@ public class ProfileForm extends AppCompatActivity {
           public void onNothingSelected(AdapterView<?> adapterView) {
           }
       });
+
+        Log.d(TAG, "onCreate: " +cities);
+
+
+
+
+        profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
+            }
+        });
     }
 
     //method to create list of states and cities from json file
