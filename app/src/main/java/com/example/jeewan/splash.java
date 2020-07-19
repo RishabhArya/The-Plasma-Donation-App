@@ -13,9 +13,11 @@ public class splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        //hide actionbar
         getSupportActionBar().hide();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //create new handler
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -23,7 +25,7 @@ public class splash extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },5000);
+        }, 5000);
 
-}
+    }
 }
