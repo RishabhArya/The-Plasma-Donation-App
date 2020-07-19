@@ -15,6 +15,7 @@
         <activity android:name=".loginginscreen"></activity>
         <activity android:name=".signup" />
         <activity android:name=".manageOtp" />
+        <activity android:name=".CovidUpdates"></activity>
         <activity
             android:name=".mainlogin"
             android:label="home" />
