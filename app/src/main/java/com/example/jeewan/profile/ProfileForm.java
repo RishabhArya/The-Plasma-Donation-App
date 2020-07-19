@@ -1,6 +1,7 @@
 package com.example.jeewan.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class ProfileForm extends AppCompatActivity {
     ActivityProfileFormBinding profileFormBinding;
     //list of all cities in a state
     HashMap<String, ArrayList<String>> cities;
+    ProfileViewModel profileViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,14 @@ public class ProfileForm extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
+            }
+        });
+
     }
 
     //method to load data ofjson file in json object
