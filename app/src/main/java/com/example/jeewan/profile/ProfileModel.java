@@ -1,4 +1,4 @@
-package com.example.jeewan.Profile;
+package com.example.jeewan.profile;
 
 public class ProfileModel {
     String name;

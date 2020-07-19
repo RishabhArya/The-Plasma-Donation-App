@@ -1,4 +1,4 @@
-package com.example.jeewan.Profile;
+package com.example.jeewan.profile;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
