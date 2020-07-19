@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".covidCases.CovidUpdates">
+    tools:context=".covidUpdates.CovidUpdateFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/indiacases_cardview"
@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:elevation="5dp"
+        android:elevation="16dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,7 +29,7 @@
                 android:id="@+id/indiacases_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
+                android:layout_marginTop="6sp"
                 android:layout_marginBottom="10sp"
                 android:text="Across India Stats"
                 android:textAlignment="center"
@@ -212,10 +212,10 @@
         android:id="@+id/statewise_casestv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6dp"
         android:text="Statewise Stats"
         android:textAlignment="center"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="40dp"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -225,7 +225,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/covidindia_rview"
         android:layout_width="match_parent"
-        android:layout_height="462dp"
+        android:layout_height="405dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

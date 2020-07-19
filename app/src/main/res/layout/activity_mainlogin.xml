@@ -8,9 +8,10 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="199dp"
-        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/terms_of_service_privacy_policy"
+        android:layout_marginBottom="8sp"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -29,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:fontFamily="@font/alegreya_bold"
+        android:textStyle="bold"
         android:text="@string/jeewan"
         android:textColor="#170909"
         android:textSize="40sp"

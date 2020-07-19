@@ -5,6 +5,8 @@
     <string name="connect_with_google">Connect With GOOGLE</string>
     <string name="connect_with_email">Connect With Email</string>
     <string name="or">OR</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
     <string name="phone_number">Phone Number</string>
     <string name="enter_your_phone_number_and_we_will_send">Enter your phone number and we will send</string>
     <string name="an_otp_to_continue">an OTP to Continue</string>

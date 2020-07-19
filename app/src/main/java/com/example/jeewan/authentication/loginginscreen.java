@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
-import com.example.jeewan.covidCases.CovidUpdates;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -48,7 +48,7 @@ public class loginginscreen extends AppCompatActivity {
                             username.setText("");
                             password.setText("");
                             Toast.makeText(loginginscreen.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(loginginscreen.this, CovidUpdates.class);
+                            Intent intent = new Intent(loginginscreen.this, MainScreenActivity.class);
                             intent.putExtra("email", mAuth.getCurrentUser().getEmail());
                             intent.putExtra("uid", mAuth.getCurrentUser().getUid());
                             startActivity(intent);

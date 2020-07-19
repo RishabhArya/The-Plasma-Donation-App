@@ -12,8 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
-import com.example.jeewan.covidCases.CovidUpdates;
+import com.example.jeewan.profile.ProfileForm;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -127,8 +128,8 @@ public class ManageOtp extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success,move to CovidUpdates activity
-                            Intent intent = new Intent(ManageOtp.this, CovidUpdates.class);
+                            // Sign in success,move to Profile Form activity
+                            Intent intent = new Intent(ManageOtp.this, ProfileForm.class);
                             startActivity(intent);
 
                         } else {
