@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.jeewan.Model.CovidStateWiseStats;
 import com.example.jeewan.Model.RootCovidStatewiseStats;
 import com.example.jeewan.Networking.GetCovidStatewiseData;
@@ -24,6 +25,9 @@ import java.util.concurrent.TimeUnit;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
+
 
 
 public class CovidUpdates extends AppCompatActivity {
