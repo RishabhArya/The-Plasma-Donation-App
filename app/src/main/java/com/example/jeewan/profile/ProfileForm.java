@@ -1,6 +1,7 @@
 package com.example.jeewan.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.SharedPreferences;
@@ -70,6 +71,14 @@ public class ProfileForm extends AppCompatActivity {
                 editor.putBoolean("formfilled", true);
                 editor.commit();
                 profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
+                profileViewModel.getDataPushed().observe(ProfileForm.this, new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if(aBoolean){
+                            
+                        }
+                    }
+                });
             }
         });
     }

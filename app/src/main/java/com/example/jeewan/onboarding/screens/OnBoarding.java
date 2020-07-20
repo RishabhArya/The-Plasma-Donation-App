@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.example.jeewan.R;
 import com.example.jeewan.authentication.Mainlogin;
 
-
 public class OnBoarding extends AppCompatActivity {
 
     //Variables
