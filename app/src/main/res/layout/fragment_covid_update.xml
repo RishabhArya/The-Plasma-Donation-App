@@ -10,15 +10,13 @@
         android:id="@+id/indiacases_cardview"
         android:layout_width="match_parent"
         android:layout_height="215dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:elevation="16dp"
         app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/statewise_casestv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -212,25 +210,22 @@
         android:id="@+id/statewise_casestv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:text="Statewise Stats"
         android:textAlignment="center"
-        android:layout_marginBottom="40dp"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/covidindia_rview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indiacases_cardview" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/covidindia_rview"
-        android:layout_width="match_parent"
-        android:layout_height="405dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statewise_casestv"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/statewise_casestv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

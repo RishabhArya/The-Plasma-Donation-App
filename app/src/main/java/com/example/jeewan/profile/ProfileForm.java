@@ -1,15 +1,19 @@
 package com.example.jeewan.profile;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
 import com.example.jeewan.databinding.ActivityProfileFormBinding;
 
@@ -34,12 +38,18 @@ public class ProfileForm extends AppCompatActivity {
     //list of all cities in a state
     HashMap<String, ArrayList<String>> cities;
     ProfileViewModel profileViewModel;
+    String city;
+    String state;
+    ActionBar actionBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         profileFormBinding=ActivityProfileFormBinding.inflate(getLayoutInflater());
         setContentView(profileFormBinding.getRoot());
+        actionBar=getSupportActionBar();
+        actionBar.hide();
 
         //initialize both set and map with data
         init();
@@ -52,6 +62,7 @@ public class ProfileForm extends AppCompatActivity {
           @Override
           public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
               String selectedItem=adapterView.getItemAtPosition(i).toString();
+              state=selectedItem;
               //populate the city adapter using cities hashmap and arrayadapter
               ArrayAdapter<String> arrayAdapter1=new ArrayAdapter<String>(ProfileForm.this,R.layout.support_simple_spinner_dropdown_item,cities.get(selectedItem));
               profileFormBinding.profileformCitySpinner.setAdapter(arrayAdapter1);
@@ -61,6 +72,18 @@ public class ProfileForm extends AppCompatActivity {
           }
       });
 
+        profileFormBinding.profileformCitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                city=adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         Log.d(TAG, "onCreate: " +cities);
 
 
@@ -69,12 +92,23 @@ public class ProfileForm extends AppCompatActivity {
         profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
+                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory(
+                        profileFormBinding.profileformNameTv.getText().toString(),
+                        profileFormBinding.profileformAgeTv.getText().toString(),
+                        profileFormBinding.profileformContactTv.getText().toString()
+                        ,city,state)).get(ProfileViewModel.class);
+
+
+
                 profileViewModel.getDataPushed().observe(ProfileForm.this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean aBoolean) {
                         if(aBoolean){
-                            
+                            Intent intent=new Intent(ProfileForm.this, MainScreenActivity.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(ProfileForm.this, "Please Try Again Later", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
