@@ -43,16 +43,27 @@ public class loginginscreen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            loading.setVisibility(View.INVISIBLE);
-                            username.setText("");
-                            password.setText("");
-                            Toast.makeText(loginginscreen.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(loginginscreen.this, MainScreenActivity.class);
-                            intent.putExtra("email", mAuth.getCurrentUser().getEmail());
-                            intent.putExtra("uid", mAuth.getCurrentUser().getUid());
-                            startActivity(intent);
-                            finish();
+                            if(mAuth.getCurrentUser().isEmailVerified()){
+                                // Sign in success, update UI with the signed-in user's information
+                                loading.setVisibility(View.INVISIBLE);
+                                username.setText("");
+                                password.setText("");
+                                Toast.makeText(loginginscreen.this, "Login Successfully", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(loginginscreen.this, MainScreenActivity.class);
+                                intent.putExtra("email", mAuth.getCurrentUser().getEmail());
+                                intent.putExtra("uid", mAuth.getCurrentUser().getUid());
+                                startActivity(intent);
+                                finish();
+                            }
+                            else {
+                                // If sign in fails, display a message to the user.
+                                // If sign in fails, display a message to the user.
+                                loading.setVisibility(View.INVISIBLE);
+                                username.setText("");
+                                password.setText("");
+                                Toast.makeText(loginginscreen.this, "Please verify your email address", Toast.LENGTH_LONG).show();
+                            }
+
 
                         } else {
                             // If sign in fails, display a message to the user.

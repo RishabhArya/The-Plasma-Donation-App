@@ -1,16 +1,17 @@
 package com.example.jeewan.authentication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jeewan.R;
 import com.example.jeewan.profile.ProfileForm;
@@ -32,6 +33,10 @@ public class ManageOtp extends AppCompatActivity {
     int counter;
     FirebaseAuth mAuth;
     TextView Heading;
+
+    ProgressBar mProgressBar;
+    CountDownTimer mCountDownTimer;
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,21 +71,29 @@ public class ManageOtp extends AppCompatActivity {
         });
 
         //Countdown timer
-        final TextView counttime=findViewById(R.id.counttime);
-        new CountDownTimer(50000,1000) {
+
+        mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
+        mProgressBar.setProgress(i);
+        mCountDownTimer=new CountDownTimer(60000,1000) {
+
             @Override
             public void onTick(long millisUntilFinished) {
-                counttime.setText(String.valueOf(counter));
-                counter++;;
+                i++;
+                mProgressBar.setProgress((int)i*100/(60000/1000));
+
             }
 
             @Override
             public void onFinish() {
+                //Do what you want
+                i++;
+                mProgressBar.setProgress(100);
                 Intent intent = new Intent(ManageOtp.this, Mainlogin.class);
                 startActivity(intent);
                 finish();
             }
         };
+        mCountDownTimer.start();
     }
 
     //method to send otp
@@ -130,6 +143,7 @@ public class ManageOtp extends AppCompatActivity {
                             // Sign in success,move to Profile Form activity
                             Intent intent = new Intent(ManageOtp.this, ProfileForm.class);
                             startActivity(intent);
+                            finish();
 
                         } else {
                             // Sign in failed, display error message
