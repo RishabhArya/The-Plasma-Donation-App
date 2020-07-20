@@ -158,12 +158,7 @@ public class ProfileForm extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
-            }
-        });
+
 
     }
 

@@ -51,6 +51,7 @@ public class ProfileViewModel extends ViewModel {
     }
 
     public MutableLiveData<ProfileModel> getDataFetched(String uuid) {
+        firebaseFirestore=FirebaseFirestore.getInstance();
 
         firebaseFirestore.collection("Users").document(uuid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

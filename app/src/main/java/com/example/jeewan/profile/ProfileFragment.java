@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.example.jeewan.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 
+@SuppressWarnings("ALL")
 public class ProfileFragment extends Fragment {
     FragmentProfileBinding profileBinding;
     ProfileViewModel viewModel;
@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false);
-        viewModel=new ViewModelProvider(this).get(ProfileViewModel.class);
+        viewModel=new ViewModelProvider(requireActivity(),new ProfileViewModelFactory("","","","","")).get(ProfileViewModel.class);
         auth=FirebaseAuth.getInstance();
         return profileBinding.getRoot();
     }
