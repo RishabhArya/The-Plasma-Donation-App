@@ -12,24 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".onboarding.screens.OnBoarding"></activity>
+        <activity android:name=".profile.ProfileForm"></activity>
+        <activity android:name=".MainScreenActivity"></activity>
         <activity android:name=".authentication.loginginscreen" />
         <activity android:name=".authentication.signup" />
-        <activity android:name=".authentication.manageOtp" />
-        <activity android:name=".covidCases.CovidUpdates" />
+        <activity android:name=".authentication.ManageOtp" />
         <activity
-            android:name=".authentication.mainlogin"
+            android:name=".authentication.Mainlogin"
             android:label="home" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
