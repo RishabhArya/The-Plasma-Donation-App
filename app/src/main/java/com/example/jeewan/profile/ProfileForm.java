@@ -3,6 +3,7 @@ package com.example.jeewan.profile;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,14 +61,14 @@ public class ProfileForm extends AppCompatActivity {
           }
       });
 
-        Log.d(TAG, "onCreate: " +cities);
-
-
-
-
+        //set onclicklistener on submit button
         profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharedPreferences=getSharedPreferences("OnBoardingScreen",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("formfilled", true);
+                editor.commit();
                 profileViewModel=new ViewModelProvider(getViewModelStore(),new ProfileViewModelFactory("a","b","c","d","e")).get(ProfileViewModel.class);
             }
         });

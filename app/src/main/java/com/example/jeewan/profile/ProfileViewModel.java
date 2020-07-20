@@ -17,8 +17,6 @@ public class ProfileViewModel extends ViewModel {
         this.state=state;
     }
 
-
-
     MutableLiveData<Boolean> dataPushed=new MutableLiveData<>();
 
     public MutableLiveData<Boolean> getDataPushed() {
