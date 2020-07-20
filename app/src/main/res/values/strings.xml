@@ -5,6 +5,8 @@
     <string name="connect_with_google">Connect With GOOGLE</string>
     <string name="connect_with_email">Connect With Email</string>
     <string name="or">OR</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
     <string name="phone_number">Phone Number</string>
     <string name="enter_your_phone_number_and_we_will_send">Enter your phone number and we will send</string>
     <string name="an_otp_to_continue">an OTP to Continue</string>
@@ -24,6 +26,38 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="enter_rtype">Enter request type</string>
+    <string name="enter_bgroup">Enter required blood group</string>
+    <string name="enter_bamount">Enter required amount of blood</string>
+    <string name="search_criteria">Enter search criteria</string>
+    <string-array name="request_type">
+        <item name="plasma_request">Request for Plasma</item>
+        <item name="blood_request">Request for Blood</item>
+    </string-array>
+    <string-array name="blood_group">
+        <item name="A+">A+</item>
+        <item name="A-">A-</item>'
+        <item name="B+">B+</item>
+        <item name="B-">B-</item>
+        <item name="AB+">AB+</item>
+        <item name="AB-">AB-</item>
+        <item name="O+">O+</item>
+        <item name="O-">O-</item>
+    </string-array>
+    <string-array name="blood_amount">
+        <item name="1 bag">1 bag</item>
+        <item name="2 bag">2 bag</item>'
+        <item name="3 bag">3 bag</item>
+        <item name="4 bag">4 bag</item>
+        <item name="5 bag">5 bag</item>
+    </string-array>
+    <string-array name="search_tags">
+        <item name="Search by City">Search by City</item>
+        <item name="Search by Blood group">Search by Blood group</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    
     <!--Titles-->
     <string name="first_slide_title">Convalescent Plasma?</string>
     <string name="second_slide_title">How do we work?</string>
@@ -39,5 +73,4 @@
     <string name="next_btn">Next</string>
     <string name="let_get_started">Lets Get Started</string>
     <string name="textview">TextView</string>
-
 </resources>
