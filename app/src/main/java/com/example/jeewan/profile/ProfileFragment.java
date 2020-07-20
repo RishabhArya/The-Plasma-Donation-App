@@ -46,6 +46,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onChanged(ProfileModel profileModel) {
                profileBinding.nameText.setText(profileModel.name);
+               profileBinding.ageText.setText(profileModel.age);
+               profileBinding.ContactText.setText(profileModel.contact);
+               profileBinding.cityText.setText(profileModel.city+" ,"+profileModel.state);
             }
         });
 
