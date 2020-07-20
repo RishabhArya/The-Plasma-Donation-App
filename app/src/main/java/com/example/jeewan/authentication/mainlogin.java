@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jeewan.R;
-import com.example.jeewan.covidCases.CovidUpdates;
+import com.example.jeewan.profile.ProfileForm;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,94 +22,86 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.hbb20.CountryCodePicker;
 
-public class mainlogin extends AppCompatActivity {
+public class Mainlogin extends AppCompatActivity {
+
     private static final int RC_SIGN_IN = 101;
     Button Signin;
+    //googlesignin client
     GoogleSignInClient mGoogleSignInClient;
     EditText phoneNumber;
     Button generateOtp;
     Button email;
-    Button pop;
     CountryCodePicker ccp;
     private FirebaseAuth mAuth;
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null){
-        Intent intent = new Intent(mainlogin.this, CovidUpdates.class);
-        startActivity(intent);
-        finish();}
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.authentication_mainlogin);
+        setContentView(R.layout.activity_mainlogin);
         getSupportActionBar().hide();
 
-
-        //
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         Signin = (Button) findViewById(R.id.googleSignIn);
+
+        //method call to create gso
         processrequest();
+        //set onclick listener on google signin button
         Signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //call signin method
                 signIn();
             }
-
         });
-        // For Phone Number
+
+        //For Phone Number
         phoneNumber = (EditText)findViewById(R.id.editTextPhone);
         ccp = (CountryCodePicker)findViewById(R.id.ccp);
+        //register entered number with ccp
         ccp.registerCarrierNumberEditText(phoneNumber);
         generateOtp = (Button)findViewById(R.id.otobutton);
+        //set onclick listener on phonelogin button
         generateOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(phoneNumber.getText().toString().isEmpty()){
-                    Toast.makeText(mainlogin.this, "Please Enter Your Phone Number", Toast.LENGTH_SHORT).show();
-                }
-                else if(phoneNumber.getText().toString().length()!=10){
-                    Toast.makeText(mainlogin.this, "Phone Number must be 10 digits", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                Intent intent = new Intent(mainlogin.this, manageOtp.class);
+                Intent intent = new Intent(Mainlogin.this, ManageOtp.class);
                 intent.putExtra("mobile",ccp.getFullNumberWithPlus().replace(" ",""));
-                startActivity(intent);}
+                startActivity(intent);
             }
         });
+
         //for email
         email = (Button) findViewById(R.id.email);
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mainlogin.this, signup.class);
+                Intent intent = new Intent(Mainlogin.this, signup.class);
                 startActivity(intent);
             }
         });
 
     }
+    //method to create gso
     private void processrequest(){
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
+    //main method for google signin
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+    //callback method for startActivityForResult
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -128,6 +120,7 @@ public class mainlogin extends AppCompatActivity {
             }
         }
     }
+    //method for firebase google auth
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
@@ -135,20 +128,20 @@ public class mainlogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(mainlogin.this, CovidUpdates.class);
+                            // Sign in success, move to ProfileForm activity
+                            Intent intent = new Intent(Mainlogin.this, ProfileForm.class);
                             startActivity(intent);
-                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(mainlogin.this, "Unable to Signin", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Mainlogin.this, "Unable to Signin", Toast.LENGTH_LONG).show();
                         }
-                        // ...
                     }
                 });
     }
 
-
-
+    //prevent from going back
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }
