@@ -16,8 +16,6 @@ public class ProfileViewModel extends ViewModel {
     FirebaseAuth auth;
     FirebaseFirestore firebaseFirestore;
 
-
-
     public ProfileViewModel(String name, String age, String contact, String city, String state) {
         this.name=name;
         this.age=age;
@@ -26,15 +24,14 @@ public class ProfileViewModel extends ViewModel {
         this.state=state;
     }
 
-
-
     MutableLiveData<Boolean> dataPushed=new MutableLiveData<>();
     MutableLiveData<ProfileModel> dataFetched=new MutableLiveData<>();
 
+    //method to insert profile data in firestore
     public MutableLiveData<Boolean> getDataPushed() {
         auth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Users").document(auth.getUid()).set(new ProfileModel(name,age,contact,city,state)).
+        firebaseFirestore.collection("Users").document(auth.getUid()).set(new ProfileModel(age,city,contact,name,state)).
                 addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -50,6 +47,7 @@ public class ProfileViewModel extends ViewModel {
         return dataPushed;
     }
 
+    //method to retrieve profile data from firstore
     public MutableLiveData<ProfileModel> getDataFetched(String uuid) {
         firebaseFirestore=FirebaseFirestore.getInstance();
 
@@ -60,8 +58,6 @@ public class ProfileViewModel extends ViewModel {
            dataFetched.setValue(profileModel);
             }
         });
-
-
         return dataFetched;
     }
 }

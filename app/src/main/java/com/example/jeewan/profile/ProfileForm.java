@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import com.example.jeewan.databinding.ActivityProfileFormBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileForm extends AppCompatActivity {
     String json;
@@ -43,6 +45,7 @@ public class ProfileForm extends AppCompatActivity {
     ProfileViewModel profileViewModel;
     String city;
     String state;
+    String contact;
     ActionBar actionBar;
 
     SharedPreferences formFilled;
@@ -67,6 +70,7 @@ public class ProfileForm extends AppCompatActivity {
         profileFormBinding.profileformStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //get selected state
                 String selectedItem = adapterView.getItemAtPosition(i).toString();
                 state = selectedItem;
                 //populate the city adapter using cities hashmap and arrayadapter
@@ -80,6 +84,7 @@ public class ProfileForm extends AppCompatActivity {
         });
 
 
+        //get selected city
         profileFormBinding.profileformCitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -91,18 +96,31 @@ public class ProfileForm extends AppCompatActivity {
 
             }
         });
+        try {
+            if (!(null == FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+                contact = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            }
+        }
+        catch (Exception e){}
 
-        Log.d(TAG, "onCreate: " + cities);
+        try{
+            if(!(null==FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())) {
+                contact = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+            }
+        }
+        catch (Exception e){}
 
+        //set contact in form
+        profileFormBinding.profileformContactTv.setText(contact);
 
+        //set listener on submit button
         profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 profileViewModel = new ViewModelProvider(getViewModelStore(), new ProfileViewModelFactory(
                         profileFormBinding.profileformNameTv.getText().toString(),
                         profileFormBinding.profileformAgeTv.getText().toString(),
-                        profileFormBinding.profileformContactTv.getText().toString()
-                        , city, state)).get(ProfileViewModel.class);
+                        contact, city, state)).get(ProfileViewModel.class);
                 profileViewModel.getDataPushed().observe(ProfileForm.this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean aBoolean) {
@@ -170,6 +188,11 @@ public class ProfileForm extends AppCompatActivity {
             e.printStackTrace();
         }
         return json;
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
 

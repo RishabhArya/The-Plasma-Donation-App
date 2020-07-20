@@ -66,6 +66,7 @@
         android:elevation="5dp"
         android:ems="10"
         android:hint="Contact"
+        android:enabled="false"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

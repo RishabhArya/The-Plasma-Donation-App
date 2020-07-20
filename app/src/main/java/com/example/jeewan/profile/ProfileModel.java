@@ -11,8 +11,7 @@ public class ProfileModel {
         
     }
 
-
-    public ProfileModel(String name, String age, String contact, String city, String state) {
+    public ProfileModel(String age, String city, String contact, String name, String state) {
         this.name = name;
         this.age = age;
         this.contact = contact;

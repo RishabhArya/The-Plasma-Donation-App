@@ -1,20 +1,36 @@
 package com.example.jeewan.request;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.DatePicker;
+import android.widget.Toast;
 
+import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
 import com.example.jeewan.databinding.FragmentDonateBinding;
 import com.example.jeewan.databinding.FragmentRequestBinding;
+import com.example.jeewan.profile.ProfileForm;
+import com.example.jeewan.profile.ProfileViewModel;
+import com.example.jeewan.profile.ProfileViewModelFactory;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RequestFragment extends Fragment {
     FragmentRequestBinding requestBinding;
+    RequestViewModel requestViewModel;
+    String reqtype,bgroup,amount,date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,5 +44,93 @@ public class RequestFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //set value in date edittext
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        date = dateFormat.format(new Date());
+        requestBinding.requestdateEdt.setText(date);
+
+        //get req type
+        requestBinding.requestTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                reqtype = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        //get selected blood group
+        requestBinding.bloodTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bgroup = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        //get required amount
+        requestBinding.bloodAmountSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                amount = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        //set on click listener on request submit button
+        requestBinding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (requestBinding.requestnameEdt.getText().toString().isEmpty()) {
+                    requestBinding.requestnameEdt.setError("Enter name");
+                    return;
+                }
+                if (requestBinding.requestcityEdt.getText().toString().isEmpty()) {
+                    requestBinding.requestcityEdt.setError("Enter City");
+                    return;
+                }
+                if (requestBinding.requesthospitalEdt.getText().toString().isEmpty()) {
+                    requestBinding.requesthospitalEdt.setError("Enter Hospital name");
+                    return;
+                }
+                if (requestBinding.requestphoneEdt.getText().toString().isEmpty()) {
+                    requestBinding.requestphoneEdt.setError("Enter Phone number");
+                    return;
+                }
+                if (requestBinding.requestdescriptionEdt.getText().toString().isEmpty()) {
+                    requestBinding.requestdescriptionEdt.setError("Enter the description");
+                    return;
+                }
+
+                //create new instance of requestview model
+                requestViewModel = new ViewModelProvider(getViewModelStore(), new RequestViewModelFactory(
+                        requestBinding.requestnameEdt.getText().toString(), reqtype, bgroup, amount,
+                        date, requestBinding.requesthospitalEdt.getText().toString(),
+                        requestBinding.requestcityEdt.getText().toString(),
+                        requestBinding.requestphoneEdt.getText().toString(),
+                        requestBinding.requestdescriptionEdt.getText().toString())).get(RequestViewModel.class);
+
+                //call getReqDataPushed to store profile data in firebase and set observer on it
+                requestViewModel.getReqDataPushed().observe(getActivity(), new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if (aBoolean) {
+                            Toast.makeText(getContext(), "Request Created", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(), "Please Try Again Later", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 }

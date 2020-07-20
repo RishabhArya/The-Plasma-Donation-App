@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        viewModel.getDataFetched(auth.getUid()).observe(this, new Observer<ProfileModel>() {
+        viewModel.getDataFetched(auth.getUid()).observe(getActivity(), new Observer<ProfileModel>() {
             @Override
             public void onChanged(ProfileModel profileModel) {
                profileBinding.nameText.setText(profileModel.name);
@@ -51,6 +51,5 @@ public class ProfileFragment extends Fragment {
                profileBinding.cityText.setText(profileModel.city+" ,"+profileModel.state);
             }
         });
-
     }
 }

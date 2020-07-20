@@ -12,6 +12,7 @@ import com.example.jeewan.onboarding.screens.OnBoarding;
 import com.example.jeewan.profile.ProfileForm;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SplashActivity extends AppCompatActivity {
 

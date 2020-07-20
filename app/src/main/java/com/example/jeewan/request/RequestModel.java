@@ -14,9 +14,10 @@ public class RequestModel {
     private String phone_number;
     private String description;
 
+    public RequestModel(){}
     //constructor
-    public RequestModel(String name, String req_type, String blood_group, String amount, String date, String hospital_name,
-                        String city, String phone_number, String description) {
+    public RequestModel(String amount,String blood_group,String city,String date,String description,String hospital_name,String name,
+                        String phone_number,String req_type) {
         this.name = name;
         this.req_type = req_type;
         this.blood_group = blood_group;

@@ -95,6 +95,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners2"
         android:elevation="5dp"
+        android:enabled="false"
         android:ems="10"
         android:hint="Enter Phone number"
         android:inputType="phone"

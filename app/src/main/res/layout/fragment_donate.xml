@@ -6,44 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".donate.DonateFragment">
 
-    <Spinner
-        android:id="@+id/search_criteria_spinner"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:elevation="5dp"
-        android:prompt="@string/search_criteria"
-        android:entries="@array/search_tags"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_corners2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/search_choice_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/rounded_corners2"
-        android:elevation="5dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="City/Blood group"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_criteria_spinner" />
+        <Spinner
+            android:id="@+id/search_criteria_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:elevation="5dp"
+            android:entries="@array/search_tags"
+            android:padding="10dp"
+            android:prompt="@string/search_criteria"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/search_choice_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/rounded_corners2"
+            android:elevation="5dp"
+            android:ems="10"
+            android:hint="City/Blood group"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_criteria_spinner" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="619dp"
-        android:layout_marginTop="18dp"
         android:id="@+id/donate_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="597dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_choice_edittext" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

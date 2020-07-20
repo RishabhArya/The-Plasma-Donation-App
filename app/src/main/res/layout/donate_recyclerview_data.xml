@@ -9,10 +9,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="268dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="8dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,6 +32,7 @@
                 android:layout_marginRight="8dp"
                 android:gravity="center_horizontal"
                 android:text="Request type"
+                android:textColor="#e91e63"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,17 +52,14 @@
 
             <TextView
                 android:id="@+id/patient_name_textview"
-                android:layout_width="192dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
                 android:gravity="center_horizontal"
-                android:text="Name"
+                android:text="Patient's Name"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -67,20 +67,20 @@
                 android:id="@+id/blood_group_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="20dp"
                 android:text="Blood group"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/patient_name_textview"
                 app:layout_constraintStart_toEndOf="@+id/patient_name_textview"
                 app:layout_constraintTop_toTopOf="@+id/patient_name_textview"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/quantity_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="20dp"
                 android:text="Quantity"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -141,9 +141,7 @@
                 android:id="@+id/patient_name_tvstats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
                 android:text="Parimal Kesan"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/patient_name_textview"
@@ -154,29 +152,43 @@
                 android:id="@+id/description_tvstats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello world"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Description"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hospitalname_tv" />
 
+            <TextView
+                android:id="@+id/request_date_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Date"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_tvstats" />
+
             <Button
                 android:id="@+id/patient_contact_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:drawableLeft="@android:drawable/stat_sys_vp_phone_call"
                 android:elevation="5dp"
                 android:text="Contact"
+                android:layout_marginBottom="8dp"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description_tvstats" />
+                app:layout_constraintTop_toBottomOf="@+id/request_date_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
