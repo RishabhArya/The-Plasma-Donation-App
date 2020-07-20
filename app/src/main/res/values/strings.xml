@@ -57,4 +57,20 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!--Titles-->
+    <string name="first_slide_title">Convalescent Plasma?</string>
+    <string name="second_slide_title">How do we work?</string>
+    <string name="third_slide_title">Are you Eligible?</string>
+    <!--Descriptions-->
+    <string name="first_slide_desc">The liquid part of the blood which is collected from patients who have recovered from novel coronavirus</string>
+    <string name="second_slide_desc">1.Register Yourself as an plasma donor or receiver \n 2.If you are a donor wait untill
+        we contact you \n 3.If you wish to receive blood get in touch with a potential donar </string>
+    <string name="third_slide_desc">1.Are you above 17 years of age \n 2.Have a prior, verified diagnosis of COVID-19,
+        but are now symptom free and fully recovered from COVID-19 \n 3.In good health,You generally feel well, even if you are being treated for a chronic condition</string>
+    <!--Buttons -->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
+    <string name="textview">TextView</string>
 </resources>
