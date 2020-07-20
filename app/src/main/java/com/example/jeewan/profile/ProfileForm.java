@@ -4,12 +4,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
-<<<<<<< HEAD
 import android.content.Intent;
-=======
-import android.content.SharedPreferences;
->>>>>>> 348324bda6d4a3373b706b8b1e87ba837427f35c
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
