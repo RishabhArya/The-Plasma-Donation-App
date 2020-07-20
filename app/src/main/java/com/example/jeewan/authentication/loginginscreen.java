@@ -26,7 +26,7 @@ public class loginginscreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loginginscreen);
+        setContentView(R.layout.authentication_loginginscreen);
         setTitle("LogIn");
         username = (EditText)findViewById(R.id.username_login);
         password = (EditText)findViewById(R.id.password_login);
