@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 onBoardingScreen = getSharedPreferences("OnBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onBoardingScreen.getBoolean("firsttime", true);
-                boolean formfilled=onBoardingScreen.getBoolean("formfilled",false);
+                boolean formfilled = onBoardingScreen.getBoolean("formfilled", false);
                 if (currentUser == null) {
                     if (isFirstTime) {
                         //move to OnBoarding activity
@@ -44,19 +44,18 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-                    if(formfilled) {
+                    if (formfilled) {
                         //move to MainScreen Activity
                         Intent intent = new Intent(SplashActivity.this, MainScreenActivity.class);
                         startActivity(intent);
-                    }
-                    else
-                    {
+                    } else {
                         //move to profile from activity
                         startActivity(new Intent(SplashActivity.this, ProfileForm.class));
                     }
                 }
             }
-        },2500);
+        }, 2500);
+    }
 
     @Override
     protected void onStart() {

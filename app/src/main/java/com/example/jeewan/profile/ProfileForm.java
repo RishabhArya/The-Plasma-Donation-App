@@ -4,8 +4,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +44,10 @@ public class ProfileForm extends AppCompatActivity {
     String city;
     String state;
     ActionBar actionBar;
+
+    SharedPreferences formFilled;
+    SharedPreferences.Editor editor;
+
 
 
     @Override
@@ -102,6 +109,8 @@ public class ProfileForm extends AppCompatActivity {
                     @Override
                     public void onChanged(Boolean aBoolean) {
                         if(aBoolean){
+                            editor.putBoolean("formfilled",true);
+                            editor.commit();
                             Intent intent=new Intent(ProfileForm.this, MainScreenActivity.class);
                             startActivity(intent);
                         }
@@ -115,9 +124,14 @@ public class ProfileForm extends AppCompatActivity {
     }
 
     //method to create list of states and cities from json file
+    @SuppressLint("WrongConstant")
     private void init() {
         states=new HashSet<>();
         cities=new HashMap<>();
+        formFilled=getSharedPreferences("OnBoardingScreen",MODE_APPEND);
+        editor=formFilled.edit();
+
+
         try {
             //create a json object by loading cities.json file
             JSONObject obj=new JSONObject(loadJson());
