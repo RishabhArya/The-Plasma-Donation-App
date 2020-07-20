@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+import android.content.SharedPreferences;
+>>>>>>> 348324bda6d4a3373b706b8b1e87ba837427f35c
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,6 +76,7 @@ public class ProfileForm extends AppCompatActivity {
           }
       });
 
+
         profileFormBinding.profileformCitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -97,9 +102,6 @@ public class ProfileForm extends AppCompatActivity {
                         profileFormBinding.profileformAgeTv.getText().toString(),
                         profileFormBinding.profileformContactTv.getText().toString()
                         ,city,state)).get(ProfileViewModel.class);
-
-
-
                 profileViewModel.getDataPushed().observe(ProfileForm.this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean aBoolean) {
