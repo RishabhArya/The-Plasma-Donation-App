@@ -1,8 +1,5 @@
 package com.example.jeewan.authentication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jeewan.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,20 +59,27 @@ public class signup extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    loading.setVisibility(View.INVISIBLE);
+                                    username.setText("");
+                                    password.setText("");
+                                    if (task.isSuccessful()){
+                                    Toast.makeText(signup.this, "Please check your email for verification", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(signup.this, loginginscreen.class);
+                                    startActivity(intent);
+                                    finish();}
+                                }
+                            });
                             // Sign in success, update UI with the signed-in user's information
-                            loading.setVisibility(View.INVISIBLE);
-                            username.setText("");
-                            password.setText("");
-                            Toast.makeText(signup.this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(signup.this, loginginscreen.class);
-                            startActivity(intent);
-                            finish();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             loading.setVisibility(View.INVISIBLE);
                             username.setText("");
                             password.setText("");
-                            Toast.makeText(signup.this, "User Already Registered", Toast.LENGTH_LONG).show();
+                            Toast.makeText(signup.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                         // ...

@@ -1,19 +1,21 @@
 package com.example.jeewan;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.example.jeewan.covidUpdates.CovidUpdateFragment;
 import com.example.jeewan.donate.DonateFragment;
 import com.example.jeewan.profile.ProfileFragment;
 import com.example.jeewan.request.RequestFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainScreenActivity extends AppCompatActivity {
     //references to bottom nav view,framelayout and fragments
@@ -28,6 +30,13 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
+        //Firebase auth
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if(!(firebaseUser != null && firebaseUser.isEmailVerified())){
+        }
 
         //inflate bottomnavview and framelayout
         bNavView = (BottomNavigationView) findViewById(R.id.bottmnavview);
