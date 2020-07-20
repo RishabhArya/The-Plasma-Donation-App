@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.jeewan.R;
-import com.example.jeewan.authentication.mainlogin;
+import com.example.jeewan.authentication.Mainlogin;
+
 
 
 public class OnBoarding extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class OnBoarding extends AppCompatActivity {
         letsGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OnBoarding.this, mainlogin.class);
+                Intent intent = new Intent(OnBoarding.this, Mainlogin.class);
                 startActivity(intent);
                 finish();
             }
@@ -56,7 +57,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, mainlogin.class));
+        startActivity(new Intent(this, Mainlogin.class));
         finish();
     }
 
