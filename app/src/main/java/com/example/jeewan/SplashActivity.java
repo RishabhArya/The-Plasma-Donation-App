@@ -8,17 +8,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.example.jeewan.authentication.mainlogin;
+import com.example.jeewan.authentication.Mainlogin;
 import com.example.jeewan.onboarding.screens.OnBoarding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
-    SharedPreferences onBoardingScreen;
+
+    FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
-        setContentView(R.layout.splash);
-
+        //hide toolbar
         getSupportActionBar().hide();
 
         //create new handler
@@ -27,23 +31,36 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 onBoardingScreen = getSharedPreferences("OnBoardingScreen",MODE_PRIVATE);
                 boolean isFirstTime = onBoardingScreen.getBoolean("firsttime",true);
-                if(isFirstTime){
-                    SharedPreferences.Editor editor = onBoardingScreen.edit();
-                    editor.putBoolean("firsttime",false);
-                    editor.commit();
-                    Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
-                    startActivity(intent);
-                    finish();
+                if (currentUser == null) {
+                    if(isFirstTime)
+                    {
+                        //move to OnBoarding activity
+                         SharedPreferences.Editor editor = onBoardingScreen.edit();
+                         editor.putBoolean("firsttime",false);
+                         editor.commit();
+                         Intent intent = new Intent(SplashActivity.this, OnBoarding.class);
+                         startActivity(intent);
+                    }
+                    else
+                    {
+                        //move to activity_mainlogin activity
+                        Intent intent = new Intent(SplashActivity.this, Mainlogin.class);
+                        startActivity(intent);
+                    }
                 }
-                else{
-                    Intent intent = new Intent(SplashActivity.this, mainlogin.class);
-                    startActivity(intent);
-                    finish();
-
-                }
-
-            }
+                else
+                {
+                    //move to MainScreen Activity
+                     Intent intent = new Intent(SplashActivity.this, MainScreenActivity.class);
+                     startActivity(intent);
+                }           
         }, 2500);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // get current user
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 }
