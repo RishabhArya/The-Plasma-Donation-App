@@ -33,6 +33,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DonateFragment extends Fragment {
     FragmentDonateBinding donateBinding;
@@ -46,8 +47,8 @@ public class DonateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         donateBinding = FragmentDonateBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(requireActivity(), new RequestViewModelFactory("", "", "",
-                "", "", "", "", "", "")).get(RequestViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity(), new RequestViewModelFactory(" ", " ", " ",
+                " ", " ", " ", " ", " ", " ")).get(RequestViewModel.class);
 
         //set linear layout manager for donate_recview
         donateBinding.donateRecyclerview.setHasFixedSize(true);
@@ -77,6 +78,7 @@ public class DonateFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 search_criteria = adapterView.getItemAtPosition(i).toString();
+
             }
 
             @Override
@@ -85,28 +87,57 @@ public class DonateFragment extends Fragment {
         });
 
 
-        donateBinding.searchChoiceEdittext.setOnKeyListener(new View.OnKeyListener() {
+//
+//        donateBinding.searchChoiceEdittext.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+//                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+//                    d
+//                }
+//                return false;
+//            }
+//        });
+
+
+        donateBinding.searchChoiceEdittext.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (charSequence.length() > 0) {
                     donateBinding.progressBar.setVisibility(View.VISIBLE);
                     Log.d(TAG, "onKey: " + donateBinding.searchChoiceEdittext.getText());
-
+                    viewModel.getReqDataListWithCriteria(search_criteria, charSequence.toString()).observe(getActivity(),
+                            new Observer<List<RequestModel>>() {
+                                @Override
+                                public void onChanged(List<RequestModel> requestModels) {
+                                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                                }
+                            });
                 }
-                return false;
+
+
             }
-        });
 
-    }
-
-
-    //method to search with criteria
-    private void searchRequestWithCriteria(String s) {
-        viewModel.getReqDataListWithCriteria(search_criteria, s).observe(getActivity(), new Observer<List<RequestModel>>() {
             @Override
-            public void onChanged(List<RequestModel> requestModels) {
-                donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+            public void afterTextChanged(Editable editable) {
+                Log.d(TAG, "afterTextChanged: " +editable.length());
+                if (editable.length() == 0) {
+                    viewModel.getReqDataList().observe(getActivity(), new Observer<List<RequestModel>>() {
+                        @Override
+                        public void onChanged(List<RequestModel> requestModels) {
+                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
+                            donateBinding.progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
             }
         });
     }
+
+
 }

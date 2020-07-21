@@ -100,37 +100,33 @@ public class RequestViewModel extends ViewModel {
 
     //method to retrieve request list with criteria from firstore
     public MutableLiveData<List<RequestModel>> getReqDataListWithCriteria(String searchcriteria, String searchkeyword) {
+        final List<RequestModel> list=new ArrayList<>();
 
         if ("Search by City".equals(searchcriteria)) {
-            firebaseFirestore.collection("Requests").orderBy("city")
-                    .startAt(searchkeyword).endAt(searchkeyword + "\uf8ff")
-                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+           firebaseFirestore.collection("Requests").orderBy("city").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+                   .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                       @Override
+                       public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                           if(task.isSuccessful()){
+                               for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                                   list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                               }
+                               reqDataListFetched.setValue(list);
+                           }
+                       }
+                   });
+        }
+        else if ("Search by Blood group".equals(searchcriteria)) {
+            firebaseFirestore.collection("Requests").orderBy("blood_group").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
-                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                            reqList.clear();
-                            for (QueryDocumentSnapshot doc : value) {
-                                RequestModel request = doc.toObject(RequestModel.class);
-                                if (!(doc.getId().equals(mAuth.getUid()))) {
-                                    reqList.add(request);
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                                    list.add(queryDocumentSnapshot.toObject(RequestModel.class));
                                 }
+                                reqDataListFetched.setValue(list);
                             }
-                            reqDataListFetched.setValue(reqList);
-                        }
-                    });
-        } else if ("Search by Blood group".equals(searchcriteria)) {
-            firebaseFirestore.collection("Requests").orderBy("blood_group")
-                    .startAt(searchkeyword).endAt(searchkeyword + "\uf8ff")
-                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                            reqList.clear();
-                            for (QueryDocumentSnapshot doc : value) {
-                                RequestModel request = doc.toObject(RequestModel.class);
-                                if (!(doc.getId().equals(mAuth.getUid()))) {
-                                    reqList.add(request);
-                                }
-                            }
-                            reqDataListFetched.setValue(reqList);
                         }
                     });
         }
