@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.text.Editable;
@@ -62,14 +63,15 @@ public class DonateFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        donateBinding.progressBar.setVisibility(View.INVISIBLE);
+
+        donateBinding.swipeRefreshLayout.setRefreshing(true);
 
         //This will fetch all the requests
-        viewModel.getReqDataList().observe(getViewLifecycleOwner(), new Observer<List<RequestModel>>() {
+        viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
             @Override
             public void onChanged(List<RequestModel> requestModels) {
                 donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
-                donateBinding.progressBar.setVisibility(View.INVISIBLE);
+                donateBinding.swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -111,7 +113,7 @@ public class DonateFragment extends Fragment {
                 Log.d(TAG, "onTextChanged: "+ charSequence.length());
 
                 if (charSequence.length() > 0) {
-                    donateBinding.progressBar.setVisibility(View.VISIBLE);
+                    donateBinding.swipeRefreshLayout.setRefreshing(true);
                     Log.d(TAG, "onKey: " + donateBinding.searchChoiceEdittext.getText());
 
 
@@ -124,6 +126,7 @@ public class DonateFragment extends Fragment {
                                         @Override
                                         public void onChanged(List<RequestModel> requestModels) {
                                             donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                                            donateBinding.swipeRefreshLayout.setRefreshing(false);
                                         }
                                     });
                         }
@@ -142,8 +145,38 @@ public class DonateFragment extends Fragment {
             }
         });
 
+        donateBinding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                if (donateBinding.searchChoiceEdittext.getText().toString().isEmpty()) {
+                    viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
+                        @Override
+                        public void onChanged(List<RequestModel> requestModels) {
+                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
+                            donateBinding.swipeRefreshLayout.setRefreshing(false);
+                        }
+                    });
+                }
+                else{
+                    viewModel.getReqDataListWithCriteria(search_criteria, donateBinding.searchChoiceEdittext.getText().toString()).observe(getActivity(),
+                            new Observer<List<RequestModel>>() {
+                                @Override
+                                public void onChanged(List<RequestModel> requestModels) {
+                                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                                    donateBinding.swipeRefreshLayout.setRefreshing(false);
+                                }
+                            });
+                }
+            }
+        });
+
+
+
+
 
     }
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.jeewan;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -25,6 +26,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private ProfileFragment profileFragment;
     private DonateFragment donateFragment;
     private CovidUpdateFragment covidUpdateFragment;
+    private  boolean flag=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +61,31 @@ public class MainScreenActivity extends AppCompatActivity {
                     //display requestfragment
                     case R.id.nav_request:
                         setFragment(requestFragment);
+                        flag=false;
+
                         return true;
                     //display donatefragment
                     case R.id.nav_donate:
                         setFragment(donateFragment);
+                        flag=true;
                         return true;
                     //display covidupdatefragment
                     case R.id.nav_covidupdates:
                         setFragment(covidUpdateFragment);
+                        flag=false;
                         return true;
                     //display profilefragment
                     case R.id.nav_profile:
                         setFragment(profileFragment);
+                        flag=false;
                     default:
                         return true;
                 }
             }
         });
     }
+
+
 
     //method to replace fragments in display on user click
     private void setFragment(Fragment fragment) {
