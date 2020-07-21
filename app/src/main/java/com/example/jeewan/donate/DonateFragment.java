@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -107,36 +108,41 @@ public class DonateFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.d(TAG, "onTextChanged: "+ charSequence.length());
 
                 if (charSequence.length() > 0) {
                     donateBinding.progressBar.setVisibility(View.VISIBLE);
                     Log.d(TAG, "onKey: " + donateBinding.searchChoiceEdittext.getText());
-                    viewModel.getReqDataListWithCriteria(search_criteria, charSequence.toString()).observe(getActivity(),
-                            new Observer<List<RequestModel>>() {
-                                @Override
-                                public void onChanged(List<RequestModel> requestModels) {
-                                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
-                                }
-                            });
+
+
+                    // We could Use RxJava here using debouncing
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            viewModel.getReqDataListWithCriteria(search_criteria, donateBinding.searchChoiceEdittext.getText().toString()).observe(getActivity(),
+                                    new Observer<List<RequestModel>>() {
+                                        @Override
+                                        public void onChanged(List<RequestModel> requestModels) {
+                                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                                        }
+                                    });
+                        }
+                    },500);
+
                 }
+
+
 
 
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Log.d(TAG, "afterTextChanged: " +editable.length());
-                if (editable.length() == 0) {
-                    viewModel.getReqDataList().observe(getActivity(), new Observer<List<RequestModel>>() {
-                        @Override
-                        public void onChanged(List<RequestModel> requestModels) {
-                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
-                            donateBinding.progressBar.setVisibility(View.INVISIBLE);
-                        }
-                    });
-                }
+
             }
         });
+
+
     }
 
 
