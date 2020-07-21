@@ -51,7 +51,8 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         //move to profile from activity
-                        startActivity(new Intent(SplashActivity.this, ProfileForm.class));
+                        Intent intent=new Intent(SplashActivity.this,ProfileForm.class);
+                        startActivity(intent);
                     }
                 }
             }

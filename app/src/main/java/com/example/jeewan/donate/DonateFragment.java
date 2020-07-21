@@ -67,13 +67,13 @@ public class DonateFragment extends Fragment {
         donateBinding.swipeRefreshLayout.setRefreshing(true);
 
         //This will fetch all the requests
-        viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
-            @Override
-            public void onChanged(List<RequestModel> requestModels) {
-                donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
-                donateBinding.swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+            viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
+                @Override
+                public void onChanged(List<RequestModel> requestModels) {
+                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
+                    donateBinding.swipeRefreshLayout.setRefreshing(false);
+                }
+            });
 
 
         //get selected search criteria
@@ -88,19 +88,6 @@ public class DonateFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
-
-//
-//        donateBinding.searchChoiceEdittext.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-//                    d
-//                }
-//                return false;
-//            }
-//        });
-
 
         donateBinding.searchChoiceEdittext.addTextChangedListener(new TextWatcher() {
             @Override
@@ -133,10 +120,6 @@ public class DonateFragment extends Fragment {
                     },500);
 
                 }
-
-
-
-
             }
 
             @Override
@@ -170,13 +153,5 @@ public class DonateFragment extends Fragment {
                 }
             }
         });
-
-
-
-
-
     }
-
-
-
 }
