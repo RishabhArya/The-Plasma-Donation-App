@@ -7,8 +7,8 @@ public class ProfileModel {
     String city;
     String state;
 
-    public ProfileModel(){
-        
+    public ProfileModel() {
+
     }
 
     public ProfileModel(String age, String city, String contact, String name, String state) {

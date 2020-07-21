@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ public class DonateFragment extends Fragment {
     FragmentDonateBinding donateBinding;
     RequestViewModel viewModel;
     String search_criteria;
+    final String TAG = "Donate Fragment";
 
 
     @Override
@@ -57,6 +60,18 @@ public class DonateFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        donateBinding.progressBar.setVisibility(View.INVISIBLE);
+
+        //This will fetch all the requests
+        viewModel.getReqDataList().observe(getViewLifecycleOwner(), new Observer<List<RequestModel>>() {
+            @Override
+            public void onChanged(List<RequestModel> requestModels) {
+                donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
+                donateBinding.progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
         //get selected search criteria
         donateBinding.searchCriteriaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -69,39 +84,21 @@ public class DonateFragment extends Fragment {
             }
         });
 
-        //add textchange listener on searchchoice edittext
-        donateBinding.searchChoiceEdittext.addTextChangedListener(new TextWatcher() {
+
+        donateBinding.searchChoiceEdittext.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    donateBinding.progressBar.setVisibility(View.VISIBLE);
+                    Log.d(TAG, "onKey: " + donateBinding.searchChoiceEdittext.getText());
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchRequestWithCriteria(charSequence.toString().toLowerCase());
-                getRequestList(charSequence.toString());
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
-
-    //method to get request lit without criteria
-    private void getRequestList(String search)
-    {
-        viewModel.getReqDataList(search).observe(getActivity(), new Observer<List<RequestModel>>() {
-            @Override
-            public void onChanged(List<RequestModel> requestModels) {
-                donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                }
+                return false;
             }
         });
 
     }
+
 
     //method to search with criteria
     private void searchRequestWithCriteria(String s) {

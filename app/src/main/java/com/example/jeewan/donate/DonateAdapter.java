@@ -21,30 +21,29 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
     private List<RequestModel> requestlist;
     private Context context;
 
-    public DonateAdapter(Context context,List<RequestModel> requestlist)
-    {
-        this.context=context;
-        this.requestlist=requestlist;
+    public DonateAdapter(Context context, List<RequestModel> requestlist) {
+        this.context = context;
+        this.requestlist = requestlist;
     }
 
     //to provide layout for each view in recyclerview
     @NonNull
     @Override
     public DonateAdapter.DonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.donate_recyclerview_data,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.donate_recyclerview_data, parent, false);
         return new DonateAdapter.DonViewHolder(view);
     }
 
     //to set all the values for each view in recyclerview
     @Override
     public void onBindViewHolder(@NonNull DonateAdapter.DonViewHolder holder, int position) {
-        final RequestModel reqdata=requestlist.get(position);
+        final RequestModel reqdata = requestlist.get(position);
 
         holder.req_type.setText(reqdata.getReq_type());
         holder.name.setText(reqdata.getName());
         holder.bloodgroup.setText(reqdata.getBlood_group());
         holder.quantity.setText(reqdata.getAmount());
-        holder.hospitalname.setText(reqdata.getHospital_name()+","+reqdata.getCity());
+        holder.hospitalname.setText(reqdata.getHospital_name() + "," + reqdata.getCity());
         holder.description.setText(reqdata.getDescription());
         holder.date.setText(reqdata.getDate());
 
@@ -63,8 +62,7 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
     }
 
     //viewholder class to provide a holder for views in recyclerview
-    public class DonViewHolder extends RecyclerView.ViewHolder
-    {
+    public class DonViewHolder extends RecyclerView.ViewHolder {
         private TextView req_type;
         private TextView name;
         private TextView bloodgroup;
@@ -74,17 +72,16 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
         private TextView date;
         private Button contact_button;
 
-        public DonViewHolder(View view)
-        {
+        public DonViewHolder(View view) {
             super(view);
-            req_type=view.findViewById(R.id.requesttype_textView);
-            name=view.findViewById(R.id.patient_name_tvstats);
-            bloodgroup=view.findViewById(R.id.blood_group_tvstats);
-            quantity=view.findViewById(R.id.blood_quantity_tvstats);
-            hospitalname=view.findViewById(R.id.hospitalname_tv);
-            description=view.findViewById(R.id.description_tvstats);
-            contact_button=view.findViewById(R.id.patient_contact_button);
-            date=view.findViewById(R.id.request_date_tv);
+            req_type = view.findViewById(R.id.requesttype_textView);
+            name = view.findViewById(R.id.patient_name_tvstats);
+            bloodgroup = view.findViewById(R.id.blood_group_tvstats);
+            quantity = view.findViewById(R.id.blood_quantity_tvstats);
+            hospitalname = view.findViewById(R.id.hospitalname_tv);
+            description = view.findViewById(R.id.description_tvstats);
+            contact_button = view.findViewById(R.id.patient_contact_button);
+            date = view.findViewById(R.id.request_date_tv);
         }
     }
 }

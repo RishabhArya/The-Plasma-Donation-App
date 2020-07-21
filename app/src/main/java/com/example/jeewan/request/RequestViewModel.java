@@ -20,19 +20,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class RequestViewModel extends ViewModel {
-    String name,reqtype,bgroup,amount,date,hospitalname,city,phoneno,description;
+    String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
     List<RequestModel> reqList;
 
     public RequestViewModel(String name, String req_type, String blood_group, String amount, String date, String hospital_name,
-                                   String city, String phone_number, String description) {
+                            String city, String phone_number, String description) {
         this.name = name;
         this.reqtype = req_type;
         this.bgroup = blood_group;
@@ -43,27 +45,25 @@ public class RequestViewModel extends ViewModel {
         this.phoneno = phone_number;
         this.description = description;
 
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        mAuth= FirebaseAuth.getInstance();
-        reqList=new ArrayList<RequestModel>();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        reqList = new ArrayList<RequestModel>();
     }
 
-    MutableLiveData<Boolean> reqdataPushed=new MutableLiveData<>();
-    MutableLiveData<List<RequestModel>> reqDataListFetched=new MutableLiveData<>();
-
+    MutableLiveData<Boolean> reqdataPushed = new MutableLiveData<>();
+    MutableLiveData<List<RequestModel>> reqDataListFetched = new MutableLiveData<>();
 
 
     //method to store request in database
     public MutableLiveData<Boolean> getReqDataPushed() {
-        firebaseFirestore.collection("Requests").document(mAuth.getUid()).set(new RequestModel(amount,bgroup,city,date,description,
-                hospitalname,name,phoneno,reqtype)).
+        firebaseFirestore.collection("Requests").document(Objects.requireNonNull(mAuth.getUid())).set(new RequestModel(amount, bgroup, city, date, description,
+                hospitalname, name, phoneno, reqtype)).
                 addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isComplete()){
+                        if (task.isComplete()) {
                             reqdataPushed.setValue(true);
-                        }
-                        else{
+                        } else {
                             reqdataPushed.setValue(false);
                         }
                     }
@@ -73,32 +73,35 @@ public class RequestViewModel extends ViewModel {
     }
 
     //method to retrieve request list from firstore
-    public MutableLiveData<List<RequestModel>> getReqDataList(final String search) {
+    public MutableLiveData<List<RequestModel>> getReqDataList() {
+        final List<RequestModel> answer = new ArrayList<>();
+        Source source = Source.CACHE;
 
-        //get list of requests from firestore
-        firebaseFirestore.collection("Requests")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            reqList.clear();
-                            if(null==search) {
-                                for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                                    RequestModel request = doc.toObject(RequestModel.class);
-                                    if (!(doc.getId().equals(mAuth.getUid()))) {
-                                        reqList.add(request);
-                                    }
-                                }
-                            }
-                            reqDataListFetched.setValue(reqList);
-                        }
-                });
+        firebaseFirestore.collection("Requests").get(source).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot queryDocumentSnapshots = task.getResult();
+                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                    for (DocumentSnapshot documentSnapshot : list) {
+                        RequestModel requestModel = documentSnapshot.toObject(RequestModel.class);
+                        answer.add(requestModel);
+                    }
+                    reqDataListFetched.setValue(answer);
+                }
+            }
+        });
+
+
         return reqDataListFetched;
     }
 
     //method to retrieve request list with criteria from firstore
-    public MutableLiveData<List<RequestModel>> getReqDataListWithCriteria(String searchcriteria,String searchkeyword) {
+    public MutableLiveData<List<RequestModel>> getReqDataListWithCriteria(String searchcriteria, String searchkeyword) {
 
-        if("Search by City".equals(searchcriteria)) {
+        if ("Search by City".equals(searchcriteria)) {
             firebaseFirestore.collection("Requests").orderBy("city")
                     .startAt(searchkeyword).endAt(searchkeyword + "\uf8ff")
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -114,8 +117,7 @@ public class RequestViewModel extends ViewModel {
                             reqDataListFetched.setValue(reqList);
                         }
                     });
-        }
-        else if("Search by Blood group".equals(searchcriteria)) {
+        } else if ("Search by Blood group".equals(searchcriteria)) {
             firebaseFirestore.collection("Requests").orderBy("blood_group")
                     .startAt(searchkeyword).endAt(searchkeyword + "\uf8ff")
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {

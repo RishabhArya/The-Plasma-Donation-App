@@ -35,7 +35,7 @@ public class MainScreenActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(!(firebaseUser != null && firebaseUser.isEmailVerified())){
+        if (!(firebaseUser != null && firebaseUser.isEmailVerified())) {
         }
 
         //inflate bottomnavview and framelayout
@@ -45,7 +45,7 @@ public class MainScreenActivity extends AppCompatActivity {
         //create instances of fragments
         requestFragment = new RequestFragment();
         donateFragment = new DonateFragment();
-        covidUpdateFragment=new CovidUpdateFragment();
+        covidUpdateFragment = new CovidUpdateFragment();
         profileFragment = new ProfileFragment();
 
         //default display messagefragment
@@ -79,11 +79,10 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     //method to replace fragments in display on user click
-    private void setFragment(Fragment fragment)
-    {
+    private void setFragment(Fragment fragment) {
         //get fragment transaction and replace the framelayout with given fragment
-        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.bottom_nav_frame,fragment);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.bottom_nav_frame, fragment);
         fragmentTransaction.commit();
     }
 

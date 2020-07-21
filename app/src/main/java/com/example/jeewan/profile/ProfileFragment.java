@@ -33,8 +33,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false);
-        viewModel=new ViewModelProvider(requireActivity(),new ProfileViewModelFactory("","","","","")).get(ProfileViewModel.class);
-        auth=FirebaseAuth.getInstance();
+        viewModel = new ViewModelProvider(requireActivity(), new ProfileViewModelFactory("", "", "", "", "")).get(ProfileViewModel.class);
+        auth = FirebaseAuth.getInstance();
         return profileBinding.getRoot();
     }
 
@@ -45,10 +45,10 @@ public class ProfileFragment extends Fragment {
         viewModel.getDataFetched(auth.getUid()).observe(getActivity(), new Observer<ProfileModel>() {
             @Override
             public void onChanged(ProfileModel profileModel) {
-               profileBinding.nameText.setText(profileModel.name);
-               profileBinding.ageText.setText(profileModel.age);
-               profileBinding.ContactText.setText(profileModel.contact);
-               profileBinding.cityText.setText(profileModel.city+" ,"+profileModel.state);
+                profileBinding.nameText.setText(profileModel.name);
+                profileBinding.ageText.setText(profileModel.age);
+                profileBinding.ContactText.setText(profileModel.contact);
+                profileBinding.cityText.setText(profileModel.city + " ," + profileModel.state);
             }
         });
     }

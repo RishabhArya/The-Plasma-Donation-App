@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
 import com.example.jeewan.databinding.ActivityProfileFormBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -100,15 +101,15 @@ public class ProfileForm extends AppCompatActivity {
             if (!(null == FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
                 contact = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             }
+        } catch (Exception e) {
         }
-        catch (Exception e){}
 
-        try{
-            if(!(null==FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())) {
+        try {
+            if (!(null == FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())) {
                 contact = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
             }
+        } catch (Exception e) {
         }
-        catch (Exception e){}
 
         //set contact in form
         profileFormBinding.profileformContactTv.setText(contact);
