@@ -18,7 +18,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
-
 import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
 import com.example.jeewan.databinding.ActivityProfileFormBinding;
@@ -62,6 +61,8 @@ public class ProfileForm extends AppCompatActivity {
         setContentView(profileFormBinding.getRoot());
         actionBar = getSupportActionBar();
         actionBar.hide();
+
+
 
         //initialize both set and map with data
         init();
