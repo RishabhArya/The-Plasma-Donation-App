@@ -1,5 +1,6 @@
 package com.example.jeewan.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.jeewan.authentication.Mainlogin;
 import com.example.jeewan.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -33,8 +35,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false);
-        viewModel=new ViewModelProvider(requireActivity(),new ProfileViewModelFactory("","","","","")).get(ProfileViewModel.class);
-        auth=FirebaseAuth.getInstance();
+        viewModel = new ViewModelProvider(requireActivity(), new ProfileViewModelFactory("", "", "", "", "")).get(ProfileViewModel.class);
+        auth = FirebaseAuth.getInstance();
         return profileBinding.getRoot();
     }
 
@@ -42,12 +44,25 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        viewModel.getDataFetched(auth.getUid()).observe(this, new Observer<ProfileModel>() {
+
+
+        viewModel.getDataFetched(auth.getUid()).observe(getActivity(), new Observer<ProfileModel>() {
             @Override
             public void onChanged(ProfileModel profileModel) {
-               profileBinding.nameText.setText(profileModel.name);
+                profileBinding.nameText.setText(profileModel.name);
+                profileBinding.ageText.setText(profileModel.age);
+                profileBinding.ContactText.setText(profileModel.contact);
+                profileBinding.cityText.setText(profileModel.city + " ," + profileModel.state);
             }
         });
 
+        profileBinding.signoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profileBinding.signoutButton.setEnabled(false);
+                auth.signOut();
+                startActivity(new Intent(getActivity(), Mainlogin.class));
+            }
+        });
     }
 }

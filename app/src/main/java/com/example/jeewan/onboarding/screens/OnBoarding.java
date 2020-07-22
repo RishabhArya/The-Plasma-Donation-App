@@ -2,6 +2,7 @@ package com.example.jeewan.onboarding.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,13 +36,13 @@ public class OnBoarding extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.onboarding__on_boarding);
 
-       onBoardingScreen=getSharedPreferences("OnBoardingScreen",MODE_PRIVATE);
+        onBoardingScreen = getSharedPreferences("OnBoardingScreen", MODE_PRIVATE);
 
         //Hooks
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         letsGetStarted = findViewById(R.id.get_started_btn);
-        skip=(Button)findViewById(R.id.skip_btn);
+        skip = (Button) findViewById(R.id.skip_btn);
         letsGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

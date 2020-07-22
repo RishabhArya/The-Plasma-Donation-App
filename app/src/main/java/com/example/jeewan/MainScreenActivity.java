@@ -30,6 +30,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private ProfileFragment profileFragment;
     private DonateFragment donateFragment;
     private CovidUpdateFragment covidUpdateFragment;
+    private  boolean flag=false;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,7 +64,7 @@ public class MainScreenActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(!(firebaseUser != null && firebaseUser.isEmailVerified())){
+        if (!(firebaseUser != null && firebaseUser.isEmailVerified())) {
         }
 
         //inflate bottomnavview and framelayout
@@ -73,7 +74,7 @@ public class MainScreenActivity extends AppCompatActivity {
         //create instances of fragments
         requestFragment = new RequestFragment();
         donateFragment = new DonateFragment();
-        covidUpdateFragment=new CovidUpdateFragment();
+        covidUpdateFragment = new CovidUpdateFragment();
         profileFragment = new ProfileFragment();
 
         //default display messagefragment
@@ -87,18 +88,23 @@ public class MainScreenActivity extends AppCompatActivity {
                     //display requestfragment
                     case R.id.nav_request:
                         setFragment(requestFragment);
+                        flag=false;
+
                         return true;
                     //display donatefragment
                     case R.id.nav_donate:
                         setFragment(donateFragment);
+                        flag=true;
                         return true;
                     //display covidupdatefragment
                     case R.id.nav_covidupdates:
                         setFragment(covidUpdateFragment);
+                        flag=false;
                         return true;
                     //display profilefragment
                     case R.id.nav_profile:
                         setFragment(profileFragment);
+                        flag=false;
                     default:
                         return true;
                 }
@@ -106,12 +112,13 @@ public class MainScreenActivity extends AppCompatActivity {
         });
     }
 
+
+
     //method to replace fragments in display on user click
-    private void setFragment(Fragment fragment)
-    {
+    private void setFragment(Fragment fragment) {
         //get fragment transaction and replace the framelayout with given fragment
-        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.bottom_nav_frame,fragment);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.bottom_nav_frame, fragment);
         fragmentTransaction.commit();
     }
 
