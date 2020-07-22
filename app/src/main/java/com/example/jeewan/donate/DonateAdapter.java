@@ -15,6 +15,7 @@ import com.example.jeewan.covidUpdates.CovidStateWiseStatsModel;
 import com.example.jeewan.covidUpdates.CovidStatewiseAdapter;
 import com.example.jeewan.request.RequestModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHolder> {

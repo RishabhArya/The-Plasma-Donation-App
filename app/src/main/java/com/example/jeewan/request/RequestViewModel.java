@@ -1,6 +1,7 @@
 package com.example.jeewan.request;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -26,12 +27,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class RequestViewModel extends ViewModel {
     String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
     List<RequestModel> reqList;
+    final  String TAG="Request View Model";
+
 
     public RequestViewModel(String name, String req_type, String blood_group, String amount, String date, String hospital_name,
                             String city, String phone_number, String description) {
@@ -75,9 +79,8 @@ public class RequestViewModel extends ViewModel {
     //method to retrieve request list from firstore
     public MutableLiveData<List<RequestModel>> getReqDataList() {
         final List<RequestModel> answer = new ArrayList<>();
-        Source source = Source.CACHE;
 
-        firebaseFirestore.collection("Requests").get(source).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Requests").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -108,11 +111,21 @@ public class RequestViewModel extends ViewModel {
                        @Override
                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
                            if(task.isSuccessful()){
-                               for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                                   list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+
+                               try {
+
+                                   for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                                       list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                   }
+                                   Log.d(TAG, "onComplete: "+ list);
+                                   reqDataListFetched.setValue(list);
                                }
-                               reqDataListFetched.setValue(list);
+                               catch(Exception e){
+                                   Log.d(TAG, "onComplete: null " +list);
+                                  reqDataListFetched.setValue(list);
+                               }
                            }
+
                        }
                    });
         }
