@@ -57,7 +57,7 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <!--Titles-->
     <string name="first_slide_title">Convalescent Plasma?</string>
     <string name="second_slide_title">How do we work?</string>
@@ -73,4 +73,6 @@
     <string name="next_btn">Next</string>
     <string name="let_get_started">Lets Get Started</string>
     <string name="textview">TextView</string>
+    <string name="we_value_your_feedback">We Value your Feedback</string>
+    <string name="what_can_we_do_to_improve">What can we do to improve?</string>
 </resources>

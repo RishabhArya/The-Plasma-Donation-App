@@ -1,13 +1,7 @@
 package com.example.jeewan.profile;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
@@ -57,6 +56,8 @@ public class ProfileForm extends AppCompatActivity {
         setContentView(profileFormBinding.getRoot());
         actionBar=getSupportActionBar();
         actionBar.hide();
+
+
 
         //initialize both set and map with data
         init();

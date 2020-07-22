@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".onboarding.screens.OnBoarding"></activity>
-        <activity android:name=".profile.ProfileForm"></activity>
-        <activity android:name=".MainScreenActivity"></activity>
+        <activity android:name=".menuIeams.AboutUs"></activity>
+        <activity android:name=".menuIeams.send_feedback" />
+        <activity android:name=".onboarding.screens.OnBoarding" />
+        <activity android:name=".profile.ProfileForm" />
+        <activity android:name=".MainScreenActivity" />
         <activity android:name=".authentication.loginginscreen" />
         <activity android:name=".authentication.signup" />
         <activity android:name=".authentication.ManageOtp" />
@@ -23,7 +25,8 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

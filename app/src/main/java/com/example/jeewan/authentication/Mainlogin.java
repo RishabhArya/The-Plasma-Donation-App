@@ -34,6 +34,7 @@ public class Mainlogin extends AppCompatActivity {
     EditText phoneNumber;
     Button generateOtp;
     Button email;
+
     CountryCodePicker ccp;
     private FirebaseAuth mAuth;
 
@@ -42,6 +43,12 @@ public class Mainlogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainlogin);
         getSupportActionBar().hide();
+
+
+
+
+
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
