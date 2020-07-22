@@ -1,6 +1,7 @@
 package com.example.jeewan.profile;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,13 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
@@ -34,6 +36,7 @@ import java.util.Set;
 
 import com.example.jeewan.databinding.ActivityProfileFormBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileForm extends AppCompatActivity {
     String json;
@@ -48,9 +51,7 @@ public class ProfileForm extends AppCompatActivity {
     String state;
     String contact;
     ActionBar actionBar;
-
-    SharedPreferences formFilled;
-    SharedPreferences.Editor editor;
+    ProgressBar progressBar;
 
 
     @Override
@@ -61,8 +62,12 @@ public class ProfileForm extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.hide();
 
+
+
         //initialize both set and map with data
         init();
+
+        progressBar=(ProgressBar)findViewById(R.id.profileform_bar);
 
         //populate the state adapter using states set and arrayadapter
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, new ArrayList(states));
@@ -114,10 +119,21 @@ public class ProfileForm extends AppCompatActivity {
         //set contact in form
         profileFormBinding.profileformContactTv.setText(contact);
 
+
+
         //set listener on submit button
         profileFormBinding.profileformSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (profileFormBinding.profileformNameTv.getText().toString().isEmpty()) {
+                    profileFormBinding.profileformNameTv.setError("Enter name");
+                    return;
+                }
+                if (profileFormBinding.profileformAgeTv.getText().toString().isEmpty()) {
+                    profileFormBinding.profileformAgeTv.setError("Enter Hospital name");
+                    return;
+                }
+                progressBar.setVisibility(View.VISIBLE);
                 profileViewModel = new ViewModelProvider(getViewModelStore(), new ProfileViewModelFactory(
                         profileFormBinding.profileformNameTv.getText().toString(),
                         profileFormBinding.profileformAgeTv.getText().toString(),
@@ -126,8 +142,7 @@ public class ProfileForm extends AppCompatActivity {
                     @Override
                     public void onChanged(Boolean aBoolean) {
                         if (aBoolean) {
-                            editor.putBoolean("formfilled", true);
-                            editor.commit();
+                            progressBar.setVisibility(View.INVISIBLE);
                             Intent intent = new Intent(ProfileForm.this, MainScreenActivity.class);
                             startActivity(intent);
                         } else {
@@ -144,9 +159,6 @@ public class ProfileForm extends AppCompatActivity {
     private void init() {
         states = new HashSet<>();
         cities = new HashMap<>();
-        formFilled = getSharedPreferences("OnBoardingScreen", MODE_APPEND);
-        editor = formFilled.edit();
-
 
         try {
             //create a json object by loading cities.json file
@@ -195,6 +207,7 @@ public class ProfileForm extends AppCompatActivity {
     public void onBackPressed() {
         moveTaskToBack(true);
     }
+
 }
 
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class signup extends AppCompatActivity {
     EditText username;
     EditText password;
     ProgressDialog progressDialog;
+    Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Signup");
@@ -31,25 +33,29 @@ public class signup extends AppCompatActivity {
         //getActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication_signup);
-        username = (EditText)findViewById(R.id.username_login);
+        username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         loading = (ProgressBar)findViewById(R.id.loading);
         progressDialog = new ProgressDialog(this);
+        signup=(Button)findViewById(R.id.signup);
 
     }
 
     public void signuphere(View view) {
+        signup.setEnabled(false);
         loading.setVisibility(View.VISIBLE);
         String email = username.getText().toString();
         String pass = password.getText().toString();
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
+            username.setError("Enter email");
+            signup.setEnabled(true);
             return;
         }
 
         if(TextUtils.isEmpty(pass)){
-            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
+            password.setError("Enter password");
+            signup.setEnabled(true);
             return;
         }
         mAuth = FirebaseAuth.getInstance();
@@ -63,8 +69,6 @@ public class signup extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     loading.setVisibility(View.INVISIBLE);
-                                    username.setText("");
-                                    password.setText("");
                                     if (task.isSuccessful()){
                                     Toast.makeText(signup.this, "Please check your email for verification", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(signup.this, loginginscreen.class);
@@ -76,13 +80,12 @@ public class signup extends AppCompatActivity {
 
                         } else {
                             // If sign in fails, display a message to the user.
+                            signup.setEnabled(true);
                             loading.setVisibility(View.INVISIBLE);
                             username.setText("");
                             password.setText("");
                             Toast.makeText(signup.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
-
-                        // ...
                     }
                 });
     }

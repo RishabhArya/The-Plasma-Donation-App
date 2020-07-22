@@ -68,7 +68,6 @@ public class DonateFragment extends Fragment {
         donateBinding.swipeRefreshLayout.setRefreshing(true);
         init();
 
-        //Spinner
         donateBinding.searchCriteriaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -81,7 +80,7 @@ public class DonateFragment extends Fragment {
             }
         });
 
-        
+
         donateBinding.searchChoiceEdittext.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -90,23 +89,25 @@ public class DonateFragment extends Fragment {
             }
 
             @Override
+
             public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
 
-            donateBinding.swipeRefreshLayout.setRefreshing(true);
-               new Handler().postDelayed(new Runnable() {
-                   @Override
-                   public void run() {
-                       viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).observe(getActivity(),
-                               new Observer<List<RequestModel>>() {
-                           @Override
-                           public void onChanged(List<RequestModel> requestModels) {
-                               donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(),requestModels));
-                               donateBinding.swipeRefreshLayout.setRefreshing(false);
-                           }
-                       });
-                   }
-               },500);
+                donateBinding.swipeRefreshLayout.setRefreshing(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        viewModel.getReqDataListWithCriteria(search_criteria, charSequence.toString()).observe(getActivity(),
+                                new Observer<List<RequestModel>>() {
+                                    @Override
+                                    public void onChanged(List<RequestModel> requestModels) {
+                                        donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
+                                        donateBinding.swipeRefreshLayout.setRefreshing(false);
+                                    }
+                                });
+                    }
+                }, 500);
             }
+
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -173,8 +174,6 @@ public class DonateFragment extends Fragment {
             }
         });
 
+
     }
-
-
-
 }

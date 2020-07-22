@@ -178,4 +178,14 @@
         app:layout_constraintTop_toTopOf="@+id/editTextPhone"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/feedback"
+        android:layout_width="46dp"
+        android:layout_height="23dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

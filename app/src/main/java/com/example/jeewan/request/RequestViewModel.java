@@ -89,8 +89,10 @@ public class RequestViewModel extends ViewModel {
                     List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
 
                     for (DocumentSnapshot documentSnapshot : list) {
-                        RequestModel requestModel = documentSnapshot.toObject(RequestModel.class);
-                        answer.add(requestModel);
+                        if(documentSnapshot.getId()!=mAuth.getUid()) {
+                            RequestModel requestModel = documentSnapshot.toObject(RequestModel.class);
+                            answer.add(requestModel);
+                        }
                     }
                     reqDataListFetched.setValue(answer);
                 }
@@ -111,9 +113,7 @@ public class RequestViewModel extends ViewModel {
                        @Override
                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
                            if(task.isSuccessful()){
-
                                try {
-
                                    for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                                        list.add(queryDocumentSnapshot.toObject(RequestModel.class));
                                    }
@@ -123,6 +123,7 @@ public class RequestViewModel extends ViewModel {
                                catch(Exception e){
                                    Log.d(TAG, "onComplete: null " +list);
                                   reqDataListFetched.setValue(list);
+
                                }
                            }
 
@@ -135,8 +136,10 @@ public class RequestViewModel extends ViewModel {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if(task.isSuccessful()){
-                                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                                    list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                                    if (queryDocumentSnapshot.getId() != mAuth.getUid()) {
+                                        list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                    }
                                 }
                                 reqDataListFetched.setValue(list);
                             }
