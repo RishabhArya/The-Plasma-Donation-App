@@ -89,7 +89,6 @@ public class DonateFragment extends Fragment {
             }
 
             @Override
-
             public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
 
                 donateBinding.swipeRefreshLayout.setRefreshing(true);
@@ -122,6 +121,7 @@ public class DonateFragment extends Fragment {
             public void onRefresh() {
 
                 if (donateBinding.searchChoiceEdittext.getText().toString().trim().length() == 0) {
+                    donateBinding.swipeRefreshLayout.setRefreshing(true);
                     viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
                         @Override
                         public void onChanged(List<RequestModel> requestModels) {
@@ -146,8 +146,6 @@ public class DonateFragment extends Fragment {
 
                                 }
                             });
-
-
                 }
             }
         });
@@ -173,7 +171,5 @@ public class DonateFragment extends Fragment {
                 viewModel.getReqDataList().removeObservers(requireActivity());
             }
         });
-
-
     }
 }

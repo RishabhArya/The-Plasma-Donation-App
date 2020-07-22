@@ -1,5 +1,6 @@
 package com.example.jeewan.profile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,6 +23,7 @@ public class ProfileFragment extends Fragment {
     FragmentProfileBinding profileBinding;
     ProfileViewModel viewModel;
     FirebaseAuth auth;
+    ProgressDialog progressDialog;
 
 
     @Override
@@ -44,11 +46,14 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
 
         viewModel.getDataFetched(auth.getUid()).observe(getActivity(), new Observer<ProfileModel>() {
             @Override
             public void onChanged(ProfileModel profileModel) {
+                progressDialog.dismiss();
                 profileBinding.nameText.setText(profileModel.name);
                 profileBinding.ageText.setText(profileModel.age);
                 profileBinding.ContactText.setText(profileModel.contact);

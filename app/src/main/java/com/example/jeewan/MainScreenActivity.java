@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.jeewan.covidUpdates.CovidUpdateFragment;
 import com.example.jeewan.donate.DonateFragment;
 import com.example.jeewan.menuIeams.AboutUs;
-import com.example.jeewan.menuIeams.send_feedback;
+import com.example.jeewan.menuIeams.Send_Feedback;
 import com.example.jeewan.profile.ProfileFragment;
 import com.example.jeewan.request.RequestFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -47,7 +47,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 startActivity(intent_aboutus);
                 return true;
             case R.id.nav_feedback:
-                Intent intent_feedback = new Intent(MainScreenActivity.this, send_feedback.class);
+                Intent intent_feedback = new Intent(MainScreenActivity.this, Send_Feedback.class);
                 startActivity(intent_feedback);
                 return true;
             default:
@@ -63,9 +63,6 @@ public class MainScreenActivity extends AppCompatActivity {
         //Firebase auth
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-        if (!(firebaseUser != null && firebaseUser.isEmailVerified())) {
-        }
 
         //inflate bottomnavview and framelayout
         bNavView = (BottomNavigationView) findViewById(R.id.bottmnavview);
@@ -89,7 +86,6 @@ public class MainScreenActivity extends AppCompatActivity {
                     case R.id.nav_request:
                         setFragment(requestFragment);
                         flag=false;
-
                         return true;
                     //display donatefragment
                     case R.id.nav_donate:
