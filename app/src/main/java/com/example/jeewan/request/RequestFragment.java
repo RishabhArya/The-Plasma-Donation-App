@@ -114,7 +114,7 @@ public class RequestFragment extends Fragment {
                 String city=requestBinding.requestcityEdt.getText().toString();
 
                 //create new instance of requestview model
-                requestViewModel = new ViewModelProvider(getViewModelStore(), new RequestViewModelFactory(
+                requestViewModel = new ViewModelProvider(getActivity(), new RequestViewModelFactory(
                         requestBinding.requestnameEdt.getText().toString(), reqtype, bgroup, amount,
                         date, requestBinding.requesthospitalEdt.getText().toString(),
                         city.substring(0,1).toUpperCase()+city.substring(1),

@@ -30,6 +30,14 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class RequestViewModel extends ViewModel {
+
+
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+    }
+
     String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;

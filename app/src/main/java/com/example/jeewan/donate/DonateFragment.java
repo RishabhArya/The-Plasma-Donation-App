@@ -160,6 +160,7 @@ public class DonateFragment extends Fragment {
                 " ", " ", " ", " ", " ", " ")).get(RequestViewModel.class);
         Log.d(TAG, "init: ");
         requestData();
+        
 
     }
 
