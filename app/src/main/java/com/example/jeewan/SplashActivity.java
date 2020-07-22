@@ -10,8 +10,11 @@ import android.os.Handler;
 import com.example.jeewan.authentication.Mainlogin;
 import com.example.jeewan.onboarding.screens.OnBoarding;
 import com.example.jeewan.profile.ProfileForm;
+import com.example.jeewan.profile.ProfileModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SplashActivity extends AppCompatActivity {
@@ -33,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 onBoardingScreen = getSharedPreferences("OnBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onBoardingScreen.getBoolean("firsttime", true);
-                boolean formfilled = onBoardingScreen.getBoolean("formfilled", false);
                 if (currentUser == null) {
                     if (isFirstTime) {
                         //move to OnBoarding activity
@@ -45,15 +47,23 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-                    if (formfilled) {
-                        //move to MainScreen Activity
-                        Intent intent = new Intent(SplashActivity.this, MainScreenActivity.class);
-                        startActivity(intent);
-                    } else {
-                        //move to profile from activity
-                        Intent intent=new Intent(SplashActivity.this,ProfileForm.class);
-                        startActivity(intent);
-                    }
+                    FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+                    firebaseFirestore.collection("Users").document(currentUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            ProfileModel profileModel = documentSnapshot.toObject(ProfileModel.class);
+                            if (profileModel != null) {
+                                // move to MainActivity activity
+                                Intent intent = new Intent(SplashActivity.this, MainScreenActivity.class);
+                                startActivity(intent);
+                            } else {
+                                // move to Profile activity
+                                Intent intent = new Intent(SplashActivity.this, ProfileForm.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
                 }
             }
         }, 2500);

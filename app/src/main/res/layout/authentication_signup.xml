@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/signup"
         android:layout_width="152dp"
         android:layout_height="48dp"
         android:layout_gravity="start"
@@ -80,7 +80,7 @@
         android:text="Alredy have an account! Signin"
         android:textColor="#E91E63"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"

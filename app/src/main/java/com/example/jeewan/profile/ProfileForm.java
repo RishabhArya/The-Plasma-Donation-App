@@ -53,8 +53,6 @@ public class ProfileForm extends AppCompatActivity {
     String contact;
     ActionBar actionBar;
     ProgressBar progressBar;
-    SharedPreferences formFilled;
-    SharedPreferences.Editor editor;
 
 
     @Override
@@ -143,8 +141,6 @@ public class ProfileForm extends AppCompatActivity {
                     @Override
                     public void onChanged(Boolean aBoolean) {
                         if (aBoolean) {
-                            editor.putBoolean("formfilled", true);
-                            editor.commit();
                             progressBar.setVisibility(View.INVISIBLE);
                             Intent intent = new Intent(ProfileForm.this, MainScreenActivity.class);
                             startActivity(intent);
@@ -162,9 +158,6 @@ public class ProfileForm extends AppCompatActivity {
     private void init() {
         states = new HashSet<>();
         cities = new HashMap<>();
-        formFilled = getSharedPreferences("OnBoardingScreen", MODE_APPEND);
-        editor = formFilled.edit();
-
 
         try {
             //create a json object by loading cities.json file
