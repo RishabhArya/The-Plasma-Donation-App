@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/nav_aboutus"
-        android:icon="@drawable/active_patient"
-        android:title="Aboutus" />
-    <item android:title="Feedback"
-        android:icon="@drawable/active_patient"
-        android:id="@+id/nav_feedback"/>
-    <item android:title="Share"
-        android:id="@+id/nav_share"/>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/feed"
+        android:title="Feedback"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/nav_aboutus"
+        android:icon="@drawable/info"
+        android:title="Aboutus"
+        app:showAsAction="ifRoom" />
 </menu>

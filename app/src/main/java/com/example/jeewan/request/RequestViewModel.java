@@ -41,7 +41,6 @@ public class RequestViewModel extends ViewModel {
     String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
-    List<RequestModel> reqList;
     final  String TAG="Request View Model";
 
 
@@ -59,7 +58,6 @@ public class RequestViewModel extends ViewModel {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        reqList = new ArrayList<RequestModel>();
     }
 
     MutableLiveData<Boolean> reqdataPushed = new MutableLiveData<>();
@@ -68,7 +66,7 @@ public class RequestViewModel extends ViewModel {
 
     //method to store request in database
     public MutableLiveData<Boolean> getReqDataPushed() {
-        firebaseFirestore.collection("Requests").document(Objects.requireNonNull(mAuth.getUid())).set(new RequestModel(amount, bgroup, city, date, description,
+        firebaseFirestore.collection("Requests").document((mAuth.getUid())).set(new RequestModel(amount, bgroup, city, date, description,
                 hospitalname, name, phoneno, reqtype)).
                 addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -95,9 +93,9 @@ public class RequestViewModel extends ViewModel {
                 if (task.isSuccessful()) {
                     QuerySnapshot queryDocumentSnapshots = task.getResult();
                     List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-
-                    for (DocumentSnapshot documentSnapshot : list) {
-                        if(documentSnapshot.getId()!=mAuth.getUid()) {
+                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                        Log.d("firedase",documentSnapshot.getId());
+                        if(!(documentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
                             RequestModel requestModel = documentSnapshot.toObject(RequestModel.class);
                             answer.add(requestModel);
                         }
@@ -116,36 +114,36 @@ public class RequestViewModel extends ViewModel {
         final List<RequestModel> list=new ArrayList<>();
 
         if ("Search by City".equals(searchcriteria)) {
-           firebaseFirestore.collection("Requests").orderBy("city").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+           firebaseFirestore.collection("Requests").orderBy("city").startAt(searchkeyword.toUpperCase())
+                   .endAt(searchkeyword.toUpperCase() + "\uf8ff").get()
                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                        @Override
                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
                            if(task.isSuccessful()){
                                try {
                                    for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                                       list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                       if (!(queryDocumentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
+                                           list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                       }
                                    }
-                                   Log.d(TAG, "onComplete: "+ list);
                                    reqDataListFetched.setValue(list);
                                }
                                catch(Exception e){
                                    Log.d(TAG, "onComplete: null " +list);
-                                  reqDataListFetched.setValue(list);
-
                                }
                            }
-
                        }
                    });
         }
         else if ("Search by Blood group".equals(searchcriteria)) {
-            firebaseFirestore.collection("Requests").orderBy("blood_group").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+            firebaseFirestore.collection("Requests").orderBy("blood_group").startAt(searchkeyword.toUpperCase())
+                    .endAt(searchkeyword.toUpperCase() + "\uf8ff").get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if(task.isSuccessful()){
                                 for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                                    if (queryDocumentSnapshot.getId() != mAuth.getUid()) {
+                                    if (!(queryDocumentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
                                         list.add(queryDocumentSnapshot.toObject(RequestModel.class));
                                     }
                                 }

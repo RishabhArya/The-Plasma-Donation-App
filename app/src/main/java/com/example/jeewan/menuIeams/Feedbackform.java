@@ -1,8 +1,13 @@
 package com.example.jeewan.menuIeams;
 
-public class feedbackform {
+public class Feedbackform {
     private String Rating;
     private String message;
+
+    public Feedbackform(String rating, String message) {
+        Rating = rating;
+        this.message = message;
+    }
 
     public String getRating() {
         return Rating;

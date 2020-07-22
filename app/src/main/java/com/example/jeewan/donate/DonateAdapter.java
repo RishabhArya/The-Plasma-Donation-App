@@ -1,6 +1,8 @@
 package com.example.jeewan.donate;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,8 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
         holder.name.setText(reqdata.getName());
         holder.bloodgroup.setText(reqdata.getBlood_group());
         holder.quantity.setText(reqdata.getAmount());
-        holder.hospitalname.setText(reqdata.getHospital_name() + "," + reqdata.getCity());
+        holder.hospitalname.setText(reqdata.getHospital_name() + "," + (reqdata.getCity().substring(0,1).
+                toUpperCase()+reqdata.getCity().substring(1)).toLowerCase());
         holder.description.setText(reqdata.getDescription());
         holder.date.setText(reqdata.getDate());
 
@@ -52,7 +55,9 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
         holder.contact_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+reqdata.getPhone_number()));
+                context.startActivity(callIntent);
             }
         });
     }
