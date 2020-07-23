@@ -13,11 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jeewan.R;
-import com.example.jeewan.covidUpdates.CovidStateWiseStatsModel;
-import com.example.jeewan.covidUpdates.CovidStatewiseAdapter;
 import com.example.jeewan.request.RequestModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHolder> {
@@ -46,8 +43,8 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
         holder.name.setText(reqdata.getName());
         holder.bloodgroup.setText(reqdata.getBlood_group());
         holder.quantity.setText(reqdata.getAmount());
-        holder.hospitalname.setText(reqdata.getHospital_name() + "," + (reqdata.getCity().substring(0,1).
-                toUpperCase()+reqdata.getCity().substring(1)).toLowerCase());
+        holder.hospitalname.setText(((reqdata.getHospital_name().substring(0,1).toUpperCase())+reqdata.getHospital_name().substring(1)) + "," +
+                (reqdata.getCity().substring(0,1)+(reqdata.getCity().substring(1)).toLowerCase()));
         holder.description.setText(reqdata.getDescription());
         holder.date.setText(reqdata.getDate());
 
@@ -80,14 +77,14 @@ public class DonateAdapter extends RecyclerView.Adapter<DonateAdapter.DonViewHol
 
         public DonViewHolder(View view) {
             super(view);
-            req_type = view.findViewById(R.id.requesttype_textView);
-            name = view.findViewById(R.id.patient_name_tvstats);
-            bloodgroup = view.findViewById(R.id.blood_group_tvstats);
-            quantity = view.findViewById(R.id.blood_quantity_tvstats);
-            hospitalname = view.findViewById(R.id.hospitalname_tv);
-            description = view.findViewById(R.id.description_tvstats);
-            contact_button = view.findViewById(R.id.patient_contact_button);
-            date = view.findViewById(R.id.request_date_tv);
+            req_type = view.findViewById(R.id.requestdis_type_tv);
+            name = view.findViewById(R.id.requestdis_name_tvstats);
+            bloodgroup = view.findViewById(R.id.requestdis_bgroup_tvstats);
+            quantity = view.findViewById(R.id.requestdis_bquant_tvstats);
+            hospitalname = view.findViewById(R.id.requestdis_hospitalname_tv);
+            description = view.findViewById(R.id.requestdis_desc_tvstats);
+            contact_button = view.findViewById(R.id.requestdis_close_button);
+            date = view.findViewById(R.id.requestdis_date_tv);
         }
     }
 }

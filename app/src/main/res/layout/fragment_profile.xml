@@ -75,7 +75,6 @@
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
         android:textColor="#000"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView21"

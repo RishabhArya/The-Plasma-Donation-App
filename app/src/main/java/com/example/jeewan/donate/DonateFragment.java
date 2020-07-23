@@ -131,7 +131,6 @@ public class DonateFragment extends Fragment {
                             viewModel.getReqDataList().removeObservers(getActivity());
                         }
                     });
-                    viewModel.getReqDataList().removeObservers(requireActivity());
                 }
                 else {
 

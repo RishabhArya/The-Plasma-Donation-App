@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,9 +19,17 @@ import com.example.jeewan.menuIeams.AboutUs;
 import com.example.jeewan.menuIeams.Send_Feedback;
 import com.example.jeewan.profile.ProfileFragment;
 import com.example.jeewan.request.RequestFragment;
+import com.example.jeewan.request.RequestFragment2;
+import com.example.jeewan.request.RequestModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.List;
 
 public class MainScreenActivity extends AppCompatActivity {
     //references to bottom nav view,framelayout and fragments
@@ -30,7 +39,10 @@ public class MainScreenActivity extends AppCompatActivity {
     private ProfileFragment profileFragment;
     private DonateFragment donateFragment;
     private CovidUpdateFragment covidUpdateFragment;
+    private RequestFragment2 requestFragment2;
     private  boolean flag=false;
+    private boolean docexists=false;
+    RequestModel requestModel;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,6 +85,23 @@ public class MainScreenActivity extends AppCompatActivity {
         donateFragment = new DonateFragment();
         covidUpdateFragment = new CovidUpdateFragment();
         profileFragment = new ProfileFragment();
+        requestFragment2=new RequestFragment2();
+
+        //get request data from user
+            FirebaseFirestore.getInstance().collection("Requests").document(firebaseUser.getUid())
+                    .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                            if(value.exists())
+                            {
+                                docexists=true;
+                            }
+                            else
+                            {
+                                docexists=false;
+                            }
+                        }
+                    });
 
         //default display messagefragment
         setFragment(donateFragment);
@@ -84,7 +113,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     //display requestfragment
                     case R.id.nav_request:
-                        setFragment(requestFragment);
+                        setRequestFragment();
                         flag=false;
                         return true;
                     //display donatefragment
@@ -116,6 +145,18 @@ public class MainScreenActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.bottom_nav_frame, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void setRequestFragment()
+    {
+        if(docexists==true)
+        {
+            setFragment(requestFragment2);
+        }
+        else
+        {
+            setFragment(requestFragment);
+        }
     }
 
     //stop backward motion

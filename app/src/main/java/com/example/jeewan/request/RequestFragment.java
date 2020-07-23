@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -22,6 +23,8 @@ import com.example.jeewan.databinding.FragmentRequestBinding;
 import com.example.jeewan.profile.ProfileForm;
 import com.example.jeewan.profile.ProfileViewModel;
 import com.example.jeewan.profile.ProfileViewModelFactory;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -31,6 +34,8 @@ public class RequestFragment extends Fragment {
     FragmentRequestBinding requestBinding;
     RequestViewModel requestViewModel;
     String reqtype,bgroup,amount,date;
+    RequestModel requestModel;
+    RequestFragment2 requestFragment2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +49,8 @@ public class RequestFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        requestFragment2=new RequestFragment2();
 
         //set value in date edittext
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -114,7 +121,7 @@ public class RequestFragment extends Fragment {
 
                 //create new instance of requestview model
 
-                requestViewModel = new ViewModelProvider(getActivity(), new RequestViewModelFactory(
+                requestViewModel = new ViewModelProvider(getViewModelStore(), new RequestViewModelFactory(
                         requestBinding.requestnameEdt.getText().toString().trim(), reqtype, bgroup, amount,
                         date, requestBinding.requesthospitalEdt.getText().toString().trim(),
                         requestBinding.requestcityEdt.getText().toString().trim().toUpperCase(),
@@ -128,6 +135,9 @@ public class RequestFragment extends Fragment {
                     public void onChanged(Boolean aBoolean) {
                         if (aBoolean) {
                             Toast.makeText(getContext(), "Request Created", Toast.LENGTH_LONG).show();
+                            FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.bottom_nav_frame,requestFragment2);
+                            fragmentTransaction.commit();
                         } else {
                             Toast.makeText(getContext(), "Please Try Again Later", Toast.LENGTH_SHORT).show();
                         }

@@ -30,19 +30,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="248dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="120dp"
-        android:text="For any suggestion please reach us out at jeewanthecovidapp@gmail.com "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.742"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitButton"
-        app:layout_constraintVertical_bias="0.224" />
-
     <EditText
         android:id="@+id/feedback"
         android:layout_width="wrap_content"
