@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menuIeams.send_feedback">
+    tools:context=".menuIeams.Send_Feedback">
 
     <TextView
         android:id="@+id/textView12"

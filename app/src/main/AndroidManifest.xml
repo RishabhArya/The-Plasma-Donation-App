@@ -3,6 +3,7 @@
     package="com.example.jeewan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".menuIeams.AboutUs"></activity>
-        <activity android:name=".menuIeams.send_feedback" />
+        <activity android:name=".menuIeams.FeedbackSubmitted"></activity>
+        <activity android:name=".menuIeams.AboutUs" />
+        <activity android:name=".menuIeams.Send_Feedback" />
         <activity android:name=".onboarding.screens.OnBoarding" />
         <activity android:name=".profile.ProfileForm" />
         <activity android:name=".MainScreenActivity" />

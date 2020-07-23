@@ -111,15 +111,16 @@ public class RequestFragment extends Fragment {
                     return;
                 }
 
-                String city=requestBinding.requestcityEdt.getText().toString();
 
                 //create new instance of requestview model
-                requestViewModel = new ViewModelProvider(getViewModelStore(), new RequestViewModelFactory(
-                        requestBinding.requestnameEdt.getText().toString(), reqtype, bgroup, amount,
-                        date, requestBinding.requesthospitalEdt.getText().toString(),
-                        city.substring(0,1).toUpperCase()+city.substring(1),
-                        requestBinding.requestphoneEdt.getText().toString(),
-                        requestBinding.requestdescriptionEdt.getText().toString())).get(RequestViewModel.class);
+
+                requestViewModel = new ViewModelProvider(getActivity(), new RequestViewModelFactory(
+                        requestBinding.requestnameEdt.getText().toString().trim(), reqtype, bgroup, amount,
+                        date, requestBinding.requesthospitalEdt.getText().toString().trim(),
+                        requestBinding.requestcityEdt.getText().toString().trim().toUpperCase(),
+                        requestBinding.requestphoneEdt.getText().toString().trim(),
+                        requestBinding.requestdescriptionEdt.getText().toString().trim())).get(RequestViewModel.class);
+
 
                 //call getReqDataPushed to store profile data in firebase and set observer on it
                 requestViewModel.getReqDataPushed().observe(getActivity(), new Observer<Boolean>() {

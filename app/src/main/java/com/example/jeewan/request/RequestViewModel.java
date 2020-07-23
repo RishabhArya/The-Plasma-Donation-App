@@ -1,6 +1,7 @@
 package com.example.jeewan.request;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -26,12 +27,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class RequestViewModel extends ViewModel {
+
+
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+    }
+
     String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
-    List<RequestModel> reqList;
+    final  String TAG="Request View Model";
+
 
     public RequestViewModel(String name, String req_type, String blood_group, String amount, String date, String hospital_name,
                             String city, String phone_number, String description) {
@@ -47,7 +58,6 @@ public class RequestViewModel extends ViewModel {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        reqList = new ArrayList<RequestModel>();
     }
 
     MutableLiveData<Boolean> reqdataPushed = new MutableLiveData<>();
@@ -56,7 +66,7 @@ public class RequestViewModel extends ViewModel {
 
     //method to store request in database
     public MutableLiveData<Boolean> getReqDataPushed() {
-        firebaseFirestore.collection("Requests").document(Objects.requireNonNull(mAuth.getUid())).set(new RequestModel(amount, bgroup, city, date, description,
+        firebaseFirestore.collection("Requests").document((mAuth.getUid())).set(new RequestModel(amount, bgroup, city, date, description,
                 hospitalname, name, phoneno, reqtype)).
                 addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -75,18 +85,17 @@ public class RequestViewModel extends ViewModel {
     //method to retrieve request list from firstore
     public MutableLiveData<List<RequestModel>> getReqDataList() {
         final List<RequestModel> answer = new ArrayList<>();
-        Source source = Source.CACHE;
 
-        firebaseFirestore.collection("Requests").get(source).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Requests").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     QuerySnapshot queryDocumentSnapshots = task.getResult();
                     List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-
-                    for (DocumentSnapshot documentSnapshot : list) {
-                        if(documentSnapshot.getId()!=mAuth.getUid()) {
+                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                        Log.d("firedase",documentSnapshot.getId());
+                        if(!(documentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
                             RequestModel requestModel = documentSnapshot.toObject(RequestModel.class);
                             answer.add(requestModel);
                         }
@@ -105,29 +114,36 @@ public class RequestViewModel extends ViewModel {
         final List<RequestModel> list=new ArrayList<>();
 
         if ("Search by City".equals(searchcriteria)) {
-           firebaseFirestore.collection("Requests").orderBy("city").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+           firebaseFirestore.collection("Requests").orderBy("city").startAt(searchkeyword.toUpperCase())
+                   .endAt(searchkeyword.toUpperCase() + "\uf8ff").get()
                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                        @Override
                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
                            if(task.isSuccessful()){
-                               for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                                   if(queryDocumentSnapshot.getId()!=mAuth.getUid()) {
-                                       list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                               try {
+                                   for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                                       if (!(queryDocumentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
+                                           list.add(queryDocumentSnapshot.toObject(RequestModel.class));
+                                       }
                                    }
+                                   reqDataListFetched.setValue(list);
                                }
-                               reqDataListFetched.setValue(list);
+                               catch(Exception e){
+                                   Log.d(TAG, "onComplete: null " +list);
+                               }
                            }
                        }
                    });
         }
         else if ("Search by Blood group".equals(searchcriteria)) {
-            firebaseFirestore.collection("Requests").orderBy("blood_group").startAt(searchkeyword).endAt(searchkeyword + "\uf8ff").get()
+            firebaseFirestore.collection("Requests").orderBy("blood_group").startAt(searchkeyword.toUpperCase())
+                    .endAt(searchkeyword.toUpperCase() + "\uf8ff").get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if(task.isSuccessful()){
                                 for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                                    if (queryDocumentSnapshot.getId() != mAuth.getUid()) {
+                                    if (!(queryDocumentSnapshot.getId().equals(mAuth.getCurrentUser().getUid()))) {
                                         list.add(queryDocumentSnapshot.toObject(RequestModel.class));
                                     }
                                 }
