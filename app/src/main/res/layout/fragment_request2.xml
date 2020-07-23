@@ -8,15 +8,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="258dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:elevation="10dp"
         app:cardBackgroundColor="#F6F4F4"
         app:cardCornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:gravity="center_horizontal"
                 android:text="Request type"
@@ -133,14 +131,16 @@
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintTop_toBottomOf="@+id/requestdis_name_tvstats"
-                tools:layout_editor_absoluteX="8dp" />
+                app:layout_constraintTop_toBottomOf="@+id/requestdis_bquant_tvstats"
+                tools:layout_editor_absoluteX="1dp" />
 
             <TextView
                 android:id="@+id/requestdis_name_tvstats"
-                android:layout_width="128dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -159,8 +159,9 @@
                 android:text="Description"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.687"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestdis_hospitalname_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/requestdis_contact_tv" />
 
             <TextView
                 android:id="@+id/requestdis_date_tv"
@@ -172,26 +173,37 @@
                 android:text="Date"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/requestdis_desc_tvstats" />
 
-            <Button
-                android:id="@+id/requestdis_close_button"
+            <TextView
+                android:id="@+id/requestdis_contact_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:drawableLeft="@android:drawable/stat_sys_vp_phone_call"
-                android:elevation="5dp"
+                android:layout_marginRight="8dp"
                 android:text="Contact"
-                android:textAllCaps="false"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestdis_date_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/requestdis_hospitalname_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/requestdis_close_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:elevation="5dp"
+        android:text="Close Request"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
