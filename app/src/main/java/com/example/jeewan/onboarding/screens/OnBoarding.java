@@ -1,8 +1,5 @@
 package com.example.jeewan.onboarding.screens;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.jeewan.R;
 import com.example.jeewan.authentication.Mainlogin;
@@ -29,6 +29,7 @@ public class OnBoarding extends AppCompatActivity {
     int currentPos;
     SharedPreferences onBoardingScreen;
     Button skip;
+    Button nxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class OnBoarding extends AppCompatActivity {
         dotsLayout = findViewById(R.id.dots);
         letsGetStarted = findViewById(R.id.get_started_btn);
         skip = (Button) findViewById(R.id.skip_btn);
+        nxt = (Button) findViewById(R.id.next_btn);
         letsGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,13 +108,19 @@ public class OnBoarding extends AppCompatActivity {
 
             if (position == 0) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                skip.setVisibility(View.VISIBLE);
+                nxt.setVisibility(View.VISIBLE);
             } else if (position == 1) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                skip.setVisibility(View.VISIBLE);
+                nxt.setVisibility(View.VISIBLE);
             } else {
                 animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
                 letsGetStarted.setAnimation(animation);
                 letsGetStarted.setVisibility(View.VISIBLE);
                 skip.setVisibility(View.INVISIBLE);
+                nxt.setVisibility(View.INVISIBLE);
+
             }
         }
 
