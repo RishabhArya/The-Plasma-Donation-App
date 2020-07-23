@@ -45,7 +45,7 @@ public class ManageOtp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_otp);
+        setContentView(R.layout.authentication_manage_otp);
 
         Heading = (TextView)findViewById(R.id.textView10);
         phoneNumber = getIntent().getStringExtra("mobile").toString();
