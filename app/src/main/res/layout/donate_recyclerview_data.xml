@@ -58,62 +58,62 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
                 android:text="Patient's Name"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@+id/requestdis_type_tv" />
 
             <TextView
                 android:id="@+id/blood_group_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:text="Blood group"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/patient_name_textview"
+                app:layout_constraintEnd_toStartOf="@+id/quantity_tv"
                 app:layout_constraintStart_toEndOf="@+id/patient_name_textview"
-                app:layout_constraintTop_toTopOf="@+id/patient_name_textview"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="@+id/patient_name_textview" />
 
             <TextView
                 android:id="@+id/quantity_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
                 android:text="Quantity"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/blood_group_tv"
-                app:layout_constraintStart_toEndOf="@+id/blood_group_tv"
-                app:layout_constraintTop_toTopOf="@+id/blood_group_tv"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/blood_group_tv" />
 
             <TextView
                 android:id="@+id/requestdis_bgroup_tvstats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="A+"
                 android:textColor="#ff0000"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/blood_group_tv"
-                app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="@+id/blood_group_tv"
-                app:layout_constraintTop_toTopOf="@id/requestdis_name_tvstats" />
+                app:layout_constraintTop_toBottomOf="@+id/blood_group_tv" />
 
             <TextView
                 android:id="@+id/requestdis_bquant_tvstats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="1 bag"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/requestdis_bgroup_tvstats"
                 app:layout_constraintEnd_toEndOf="@+id/quantity_tv"
                 app:layout_constraintStart_toStartOf="@+id/quantity_tv"
-                app:layout_constraintTop_toTopOf="@+id/requestdis_bgroup_tvstats" />
+                app:layout_constraintTop_toBottomOf="@+id/quantity_tv" />
 
             <TextView
                 android:id="@+id/requestdis_hospitalname_tv"
@@ -142,12 +142,11 @@
                 android:id="@+id/requestdis_name_tvstats"
                 android:layout_width="128dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
                 android:text="Parimal Kesan"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/patient_name_textview"
-                app:layout_constraintStart_toStartOf="@+id/patient_name_textview"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/patient_name_textview" />
 
             <TextView

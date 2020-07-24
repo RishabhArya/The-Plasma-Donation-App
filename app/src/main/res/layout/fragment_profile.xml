@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +19,6 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="227dp"
-
             android:scaleType="centerCrop"
             android:src="@drawable/jeewan"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,45 +32,43 @@
 
     <TextView
         android:id="@+id/nameText"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:gravity="start"
         android:textColor="#000"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
-        app:layout_constraintStart_toEndOf="@+id/textView19">
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19">
 
     </TextView>
 
     <TextView
         android:id="@+id/ageText"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
         android:textColor="#000"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
-        app:layout_constraintStart_toStartOf="@+id/nameText"></TextView>
-  
-  <TextView
+        app:layout_constraintStart_toStartOf="@+id/nameText"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"></TextView>
+
+    <TextView
         android:id="@+id/cityText"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
         android:textColor="#000"
         android:textSize="22sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/ContactText">
-    </TextView>
+        app:layout_constraintTop_toBottomOf="@+id/ContactText"></TextView>
 
 
     <TextView
         android:id="@+id/ContactText"
-        android:layout_width="240dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="#000"
@@ -85,13 +81,12 @@
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Name "
-        android:textAlignment="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:text="Name:"
         android:textColor="#E91E63"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -102,42 +97,45 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Age"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:text="Age:"
         android:textColor="#E91E63"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19"></TextView>
-<TextView
+
+    <TextView
         android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:text="Address:"
         android:textColor="#E91E63"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cityText"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="@+id/textView19">
-    </TextView>
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView21"></TextView>
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Contact"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:text="Contact:"
         android:textColor="#E91E63"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/ContactText"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="@+id/textView19" />
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -153,7 +151,7 @@
         android:layout_height="60dp"
         android:layout_margin="40dp"
         android:layout_marginTop="64dp"
-        android:background="@drawable/otp_button"
+        android:background="@drawable/button_otp"
         android:text="Log Out"
         android:textAllCaps="false"
         android:textColor="#FFF"

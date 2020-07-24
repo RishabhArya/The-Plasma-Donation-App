@@ -3,15 +3,14 @@ package com.example.jeewan.profile;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.jeewan.authentication.Mainlogin;
 import com.example.jeewan.databinding.FragmentProfileBinding;
@@ -55,7 +54,7 @@ public class ProfileFragment extends Fragment {
             public void onChanged(ProfileModel profileModel) {
                 progressDialog.dismiss();
                 profileBinding.nameText.setText(profileModel.name);
-                profileBinding.ageText.setText(profileModel.age);
+                profileBinding.ageText.setText(profileModel.age + " yrs");
                 profileBinding.ContactText.setText(profileModel.contact);
                 profileBinding.cityText.setText(profileModel.city + " ," + profileModel.state);
             }
