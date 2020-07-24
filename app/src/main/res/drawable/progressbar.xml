@@ -8,7 +8,8 @@
             android:centerColor="#E91E63"
             android:centerY="0.75"
             android:endColor="#E91E63"
-            android:startColor="#ffffff" />
+            android:startColor="#edb4c8"
+            />
     </shape>
 </item>
 <item android:id="@android:id/progress">

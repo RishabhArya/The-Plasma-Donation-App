@@ -26,6 +26,7 @@
         android:gravity="center_horizontal"
         android:text="We Have sent an OTP to "
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
         android:id="@+id/butVerify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/otp_button"
+        android:background="@drawable/button_otp"
         android:text="Verify OTP"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,5 +60,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/butVerify" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Progress"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/progressbar"
+        app:layout_constraintEnd_toEndOf="@+id/progressbar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/progressbar" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="60sec"
+        app:layout_constraintEnd_toEndOf="@+id/progressbar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/progressbar"
+        app:layout_constraintTop_toBottomOf="@+id/progressbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

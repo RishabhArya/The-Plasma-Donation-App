@@ -5,10 +5,10 @@
         android:icon="@drawable/ic_donate_main"
         android:title="Donate" />
     <item android:title="Request"
-        android:icon="@drawable/ic_receive"
+        android:icon="@drawable/bottom_nav_receive"
         android:id="@+id/nav_request"/>
     <item android:title="Covid Updates"
-        android:icon="@drawable/virus_img"
+        android:icon="@drawable/covid_virus_img"
         android:id="@+id/nav_covidupdates"/>
     <item android:title="Profile"
         android:icon="@drawable/nav_profile"

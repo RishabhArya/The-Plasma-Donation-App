@@ -25,8 +25,8 @@ public class SliderAdapter extends PagerAdapter {
 
     int images[] = {
             R.drawable.ic_corona_logo,
-            R.drawable.ic_two_hearts,
-            R.drawable.ic_donar
+            R.drawable.onboarding_two_hearts,
+            R.drawable.onboarding_donar
     };
     int headings[] = {
             R.string.first_slide_title,

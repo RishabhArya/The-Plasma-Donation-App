@@ -10,7 +10,10 @@
         android:id="@+id/indiacases_cardview"
         android:layout_width="match_parent"
         android:layout_height="215dp"
-        android:elevation="16dp"
+        android:layout_marginTop="2dp"
+        android:elevation="8dp"
+        app:cardBackgroundColor="#faf8f7"
+        app:cardUseCompatPadding="true"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/statewise_casestv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +34,7 @@
                 android:layout_marginBottom="10sp"
                 android:text="Across India Stats"
                 android:textAlignment="center"
+                android:textColor="#d81b60"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -50,8 +54,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Confirmed"
-                    android:textColor="#ff0000"
-                    android:textSize="18sp"
+                    android:textColor="#ff1744"
+                    android:textSize="17.5sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -61,8 +65,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Active"
-                    android:textColor="#0000ff"
-                    android:textSize="18sp"
+                    android:textColor="#2979ff"
+                    android:textSize="17.5sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -72,8 +76,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Recovered"
-                    android:textColor="#3cb371"
-                    android:textSize="18sp"
+                    android:textColor="#00e676"
+                    android:textSize="17.5sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -83,8 +87,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Deceased"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textColor="#263238"
+                    android:textSize="17.5sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -102,28 +106,28 @@
                     android:layout_width="33dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/virus_img" />
+                    app:srcCompat="@drawable/covid_virus_img" />
 
                 <ImageView
                     android:id="@+id/india_active_iv"
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/active_patient" />
+                    app:srcCompat="@drawable/covid_active_patient" />
 
                 <ImageView
                     android:id="@+id/india_recovered_iv"
                     android:layout_width="23dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/recovered_patient" />
+                    app:srcCompat="@drawable/covid_recovered_patient" />
 
                 <ImageView
                     android:id="@+id/india_deceased_iv"
                     android:layout_width="28dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/deceased_patient" />
+                    app:srcCompat="@drawable/covid_deceased_patient" />
             </LinearLayout>
 
             <LinearLayout
@@ -142,7 +146,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
-                    android:textColor="#ff0000"
+                    android:textColor="#ff1744"
                     android:textSize="18sp" />
 
                 <TextView
@@ -152,7 +156,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
-                    android:textColor="#0000ff"
+                    android:textColor="#2979ff"
                     android:textSize="18sp" />
 
                 <TextView
@@ -162,7 +166,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
-                    android:textColor="#3cb371"
+                    android:textColor="#00e676"
                     android:textSize="18sp" />
 
                 <TextView
@@ -172,7 +176,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="TextView"
-                    android:textColor="#000000"
+                    android:textColor="#263238"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -185,7 +189,7 @@
 
                 <TextView
                     android:id="@+id/india_lastupdated_tv"
-                    android:layout_width="217dp"
+                    android:layout_width="2dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10sp"
                     android:layout_weight="2"
@@ -211,6 +215,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Statewise Stats"
+        android:textColor="#d81b60"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"

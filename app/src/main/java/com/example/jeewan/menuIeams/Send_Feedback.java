@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.jeewan.MainScreenActivity;
 import com.example.jeewan.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +26,7 @@ public class Send_Feedback extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_feedback);
+        setContentView(R.layout.menu_send_feedback);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         ratingBar.setRating(1);
         ratedValue=ratingBar.getRating();
