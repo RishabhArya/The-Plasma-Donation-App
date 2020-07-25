@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_donate_main"
         android:title="Donate" />
     <item android:title="Request"
-        android:icon="@drawable/bottom_nav_receive"
+        android:icon="@drawable/ic_heart"
         android:id="@+id/nav_request"/>
     <item android:title="Covid Updates"
         android:icon="@drawable/covid_virus_img"

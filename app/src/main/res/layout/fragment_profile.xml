@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,63 +33,73 @@
 
     <TextView
         android:id="@+id/nameText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:gravity="start"
+        android:paddingRight="20dp"
         android:textColor="#000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/ageText"
         app:layout_constraintTop_toTopOf="@+id/textView19">
 
     </TextView>
 
     <TextView
         android:id="@+id/ageText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="start"
+        android:paddingRight="20dp"
         android:textColor="#000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/nameText"></TextView>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/ContactText"
+        app:layout_constraintTop_toTopOf="@+id/textView18"></TextView>
+
 
     <TextView
         android:id="@+id/cityText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="6dp"
         android:gravity="start"
+        android:paddingRight="20dp"
         android:textColor="#000"
-        android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/ContactText"></TextView>
-
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView15"></TextView>
 
     <TextView
         android:id="@+id/ContactText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="2dp"
+        android:gravity="start"
+        android:paddingRight="20dp"
         android:textColor="#000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/ageText">
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cityText"
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintVertical_bias="0.0">
 
     </TextView>
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:gravity="start"
-        android:text="Name:"
+        android:gravity="center"
+        android:text="Name "
+        android:textAlignment="center"
         android:textColor="#E91E63"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
@@ -97,44 +108,41 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="start"
-        android:text="Age:"
+        android:gravity="center"
+        android:text="Age"
         android:textColor="#E91E63"
-        android:textSize="24sp"
+        android:textSize="22sp"
+
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19"></TextView>
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="start"
         android:text="Address:"
         android:textColor="#E91E63"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/textView21"></TextView>
 
     <TextView
         android:id="@+id/textView21"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="start"
+        android:gravity="center"
         android:text="Contact:"
         android:textColor="#E91E63"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <androidx.constraintlayout.widget.Guideline

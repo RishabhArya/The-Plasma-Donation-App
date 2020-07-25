@@ -38,7 +38,7 @@
 
     <Button
         android:id="@+id/login_login"
-        android:layout_width="152dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
@@ -49,6 +49,7 @@
         android:onClick="signinhere"
         android:text="Login"
         android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

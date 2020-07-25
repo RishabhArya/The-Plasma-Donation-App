@@ -182,11 +182,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:background="@drawable/button_otp"
                 android:drawableLeft="@android:drawable/stat_sys_vp_phone_call"
                 android:elevation="5dp"
                 android:text="Contact"
                 android:textAllCaps="false"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/requestdis_date_tv" />

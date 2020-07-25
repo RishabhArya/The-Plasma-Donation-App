@@ -116,7 +116,7 @@
         android:drawableStart="@drawable/ic_mail"
         android:padding="5dp"
         android:text="@string/connect_with_email"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,6 +151,7 @@
         android:layout_marginEnd="40dp"
         android:text="@string/mobile_no"
         app:layout_constraintEnd_toStartOf="@+id/editTextPhone"
+        app:layout_constraintStart_toStartOf="@+id/ccp"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <View

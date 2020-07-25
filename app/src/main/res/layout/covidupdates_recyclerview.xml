@@ -141,27 +141,23 @@
                 android:id="@+id/statewise_lastupdated_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="2dp"
                 android:text="Last Updated"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/statewise_lastupdated_tvstats"
-                app:layout_constraintEnd_toStartOf="@+id/statewise_lastupdated_tvstats"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.235"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/statewise_lastupdated_tvstats"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/statewise_lastupdated_tvstats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="44dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
                 android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/statewise_deceased_tv"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/statewise_lastupdated_tv"
                 app:layout_constraintTop_toBottomOf="@+id/statewise_deceased_tv" />
 
