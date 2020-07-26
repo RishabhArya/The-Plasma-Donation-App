@@ -58,6 +58,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331811609962:android:018fa9b4e548e3e2065913",
+        "android_client_info": {
+          "package_name": "com.plasmadonation.jeewan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331811609962-ranq52gtajdhlu0qt3tlafnsti64houf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plasmadonation.jeewan",
+            "certificate_hash": "d528e7ddd2255812f0c08c0ccc1b770eb19e39de"
+          }
+        },
+        {
+          "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVA6SKvyQCI3YGgE8NGC7heF32tf-G0z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

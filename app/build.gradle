@@ -2,11 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    lintOptions{
+        checkReleaseBuilds false
+    }
+
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.example.jeewan"
+        applicationId "com.plasmadonation.jeewan"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
