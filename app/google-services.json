@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:331811609962:android:27fa11db9764bc8d065913",
         "android_client_info": {
-          "package_name": "com.example.jeewan"
+          "package_name": "com.plasmadonation.jeewan"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "331811609962-7tdk7v6rsk996hnbqkih4466kf51ch2u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.jeewan",
+            "package_name": "com.plasmadonation.jeewan",
             "certificate_hash": "d528e7ddd2255812f0c08c0ccc1b770eb19e39de"
           }
         },
