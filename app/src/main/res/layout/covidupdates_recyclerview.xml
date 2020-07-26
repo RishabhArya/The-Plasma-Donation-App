@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="205dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="4dp"
         android:elevation="12dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="#faf8f7"
@@ -20,9 +20,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="403dp"
-            android:layout_height="195dp"
-            android:layout_marginTop="4dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/statename_tv"

@@ -8,13 +8,12 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="199dp"
-        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/terms_of_service_privacy_policy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.0" />

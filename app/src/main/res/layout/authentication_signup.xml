@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="logintextview"
-        android:text="Already have an account! Signin instead"
+        android:text="Already have an account? Signin instead"
         android:textColor="#E91E63"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/signup"

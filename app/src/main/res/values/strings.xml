@@ -64,9 +64,9 @@
     <string name="third_slide_title">Am I eligible to donate?</string>
     <!--Descriptions-->
     <string name="first_slide_desc">Plasma is a vital source material for a number of plasma-derived medications that treat and prevent life-threatening diseases, illnesses and conditions. Plasma cannot be created in a laboratory or synthetically produced. Compassionate donors donating their plasma make these medications possible.</string>
-    <string name="second_slide_desc"><b>-</b>Register Yourself as the Jeewan App \n<b>-</b> If you need plasma - Create a Request\n <b>-</b>If you wish to donate - Get in touch with someone who has requested. </string>
-    <string name="third_slide_desc"><b>-</b>You are at least <b>17 years</b> old and weigh <b>110 lbs/50 kgs</b>. Additional weight requirements apply for donors age 18 or younger.\n <b>-</b>Have a prior, <b>verified</b> diagnosis of COVID-19,
-        but are now symptom free and fully recovered from COVID-19 \n <b>-</b>.In <b>good</b> health,You generally feel well, even if you are being treated for a chronic condition</string>
+    <string name="second_slide_desc"><b>-</b>Register Yourself as the Jeewan App \n<b>-</b>If you need plasma - Create a Request\n<b>-</b>If you wish to donate - Get in touch with someone who has requested. </string>
+    <string name="third_slide_desc"><b>-</b>You are at least <b>17 years</b> old and weigh <b>110 lbs/50 kgs</b>. Additional weight requirements apply for donors age 18 or younger.\n<b>-</b>Have a prior, <b>verified</b> diagnosis of COVID-19,
+        but are now symptom free and fully recovered from COVID-19 \n<b>-</b>In <b>good</b> health,You generally feel well, even if you are being treated for a chronic condition</string>
     <!--Buttons -->
     <string name="skip_btn">Skip</string>
     <string name="next_btn">Next</string>
