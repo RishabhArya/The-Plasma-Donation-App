@@ -88,26 +88,24 @@ public class DonateFragment extends Fragment {
 
                 donateBinding.swipeRefreshLayout.setRefreshing(true);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                //new Handler().postDelayed(new Runnable() {
+                    //@Override
+                  //  public void run() {
 
                         viewModel.getReqDataListWithCriteria(search_criteria, charSequence.toString()).observe(getActivity(),
                                 new Observer<List<RequestModel>>() {
                                     @Override
                                     public void onChanged(List<RequestModel> requestModels) {
-                                        if(requestModels.size()>0) {
-                                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
-                                        }
-                                        else{
+                                        if(requestModels.size()==0){
                                             donateBinding.norequestTv.setVisibility(View.VISIBLE);
                                         }
+                                        donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
                                         donateBinding.swipeRefreshLayout.setRefreshing(false);
-                                        viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
+                                        //viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
                                     }
                                 });
-                    }
-                }, 200);
+                //    }
+               // }, 200);
 
 
             }
@@ -131,28 +129,23 @@ public class DonateFragment extends Fragment {
                         @Override
                         public void onChanged(List<RequestModel> requestModels) {
                             Log.d(TAG, "onChanged: in refresh");
-                            if(requestModels.size()>0){
-                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(),requestModels));}
-                            else{
-                                donateBinding.norequestTv.setVisibility(View.VISIBLE);
-                            }
+                            if(requestModels.size()==0){
+                                donateBinding.norequestTv.setVisibility(View.VISIBLE);}
+                            donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(),requestModels));
                             donateBinding.swipeRefreshLayout.setRefreshing(false);
                             viewModel.getReqDataList().removeObservers(getActivity());
                         }
                     });
                 }
                 else {
-
                     viewModel.getReqDataListWithCriteria(search_criteria, donateBinding.searchChoiceEdittext.getText().toString())
                             .observe(getViewLifecycleOwner(),
                             new Observer<List<RequestModel>>() {
                                 @Override
                                 public void onChanged(List<RequestModel> requestModels) {
-                                    if(requestModels.size()>0){
-                                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));}
-                                    else{
-                                        donateBinding.norequestTv.setVisibility(View.VISIBLE);
-                                    }
+                                    if(requestModels.size()==0){
+                                        donateBinding.norequestTv.setVisibility(View.VISIBLE);}
+                                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
                                     donateBinding.swipeRefreshLayout.setRefreshing(false);
                                 }
                             });
@@ -175,22 +168,16 @@ public class DonateFragment extends Fragment {
 
     public void requestData(){
 
-        viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
+        viewModel.getReqDataList().observe(getActivity(), new Observer<List<RequestModel>>() {
             @Override
             public void onChanged(List<RequestModel> requestModels) {
-                if(requestModels.size()>0) {
-                    donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
-                }
-                else
-                {
-                    donateBinding.norequestTv.setVisibility(View.VISIBLE);
-                }
+                if(requestModels.size()==0) {
+                    donateBinding.norequestTv.setVisibility(View.VISIBLE);}
+
+                donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getContext(), requestModels));
                 donateBinding.swipeRefreshLayout.setRefreshing(false);
                 viewModel.getReqDataList().removeObservers(requireActivity());
             }
         });
     }
-
-
-
 }

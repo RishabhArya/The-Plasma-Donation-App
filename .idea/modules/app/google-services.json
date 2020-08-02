@@ -121,6 +121,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "331811609962-u691c28bnm0kbhbgjj8d8qu45p2dcrvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theplasmadonation.jeewan",
+            "certificate_hash": "4b76ea4253a10f4866d4528ea2f10b6b00b467c2"
+          }
+        },
+        {
+          "client_id": "331811609962-bkpcdinsratdgs4nhjiqi784u40kdb1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theplasmadonation.jeewan",
+            "certificate_hash": "bdbddde1204e71adff8d2d207b46a7affa146a01"
+          }
+        },
+        {
+          "client_id": "331811609962-sdtfnea3kd0sisk4vmfds0bt68ejrfku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theplasmadonation.jeewan",
+            "certificate_hash": "e58ba2c41e5cf6b27305dbfbf10e42ceb267b27f"
+          }
+        },
+        {
           "client_id": "331811609962-poraa7pdktmvlfkrq974hfn457j9fjak.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
