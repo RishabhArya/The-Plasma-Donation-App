@@ -86,6 +86,7 @@ public class DonateFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+
                         viewModel.getReqDataListWithCriteria(search_criteria, charSequence.toString()).observe(getActivity(),
                                 new Observer<List<RequestModel>>() {
                                     @Override
@@ -101,7 +102,7 @@ public class DonateFragment extends Fragment {
                                     }
                                 });
                     }
-                }, 100);
+                }, 200);
                 viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
 
             }
@@ -121,7 +122,7 @@ public class DonateFragment extends Fragment {
                 donateBinding.swipeRefreshLayout.setRefreshing(true);
 
                 if (donateBinding.searchChoiceEdittext.getText().toString().trim().length() == 0) {
-                    viewModel.getReqDataList().observe(requireActivity(), new Observer<List<RequestModel>>() {
+                    viewModel.getReqDataList().observe(getActivity(), new Observer<List<RequestModel>>() {
                         @Override
                         public void onChanged(List<RequestModel> requestModels) {
                             Log.d(TAG, "onChanged: in refresh");
@@ -182,17 +183,5 @@ public class DonateFragment extends Fragment {
     }
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        viewModel.getReqDataList().removeObservers(getActivity());
 
-    }
-
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        viewModel.getReqDataList().removeObservers(requireActivity());
-    }
 }
