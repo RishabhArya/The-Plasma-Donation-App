@@ -98,6 +98,7 @@ public class ManageOtp extends AppCompatActivity {
                 //Do what you want
                 i++;
                 mProgressBar.setProgress(100);
+                mCountDownTimer.cancel();
                 Intent intent = new Intent(ManageOtp.this, Mainlogin.class);
                 startActivity(intent);
                 finish();
@@ -160,11 +161,13 @@ public class ManageOtp extends AppCompatActivity {
                                     if (profileModel!= null) {
                                         // move to MainActivity activity
                                         Intent intent = new Intent(ManageOtp.this, MainScreenActivity.class);
+                                        mCountDownTimer.cancel();
                                         startActivity(intent);
                                     }
                                     else{
                                         // move Profile activity
                                         Intent intent = new Intent(ManageOtp.this, ProfileForm.class);
+                                        mCountDownTimer.cancel();
                                         startActivity(intent);
                                     }
                                 }
