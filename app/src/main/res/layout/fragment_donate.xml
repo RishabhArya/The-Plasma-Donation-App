@@ -44,6 +44,7 @@
                     android:elevation="5dp"
                     android:background="#ffffff"
                     android:ems="10"
+                    android:textCursorDrawable="@drawable/color_cursor"
                     android:padding="10sp"
                     android:enabled="true"
                     android:hint="City/Blood group"

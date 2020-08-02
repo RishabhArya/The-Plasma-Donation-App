@@ -37,6 +37,7 @@
         android:layout_marginTop="36dp"
         android:autofillHints=""
         android:ems="10"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:gravity="start|top"
         android:hint="Optional"
         android:inputType="textMultiLine"

@@ -59,6 +59,7 @@
         android:layout_marginTop="32dp"
         android:autofillHints=""
         android:ems="10"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:gravity="center"
         android:hint="@string/phone_number"
         android:inputType="phone"
