@@ -68,6 +68,8 @@ public class DonateFragment extends Fragment {
         donateBinding.swipeRefreshLayout.setRefreshing(true);
         init();
 
+        requestData();
+
         donateBinding.searchCriteriaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -86,12 +88,14 @@ public class DonateFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
             }
 
             @Override
             public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
 
                 donateBinding.swipeRefreshLayout.setRefreshing(true);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -101,10 +105,13 @@ public class DonateFragment extends Fragment {
                                     public void onChanged(List<RequestModel> requestModels) {
                                         donateBinding.donateRecyclerview.setAdapter(new DonateAdapter(getActivity(), requestModels));
                                         donateBinding.swipeRefreshLayout.setRefreshing(false);
+                                        viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
                                     }
                                 });
                     }
-                }, 500);
+                }, 200);
+                viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
+
             }
 
 
@@ -153,12 +160,9 @@ public class DonateFragment extends Fragment {
     }
 
     public void init() {
-        viewModel = new ViewModelProvider(getActivity(), new RequestViewModelFactory(" ", " ", " ",
+        viewModel = new ViewModelProvider(getActivity()
+                , new RequestViewModelFactory(" ", " ", " ",
                 " ", " ", " ", " ", " ", " ")).get(RequestViewModel.class);
-        Log.d(TAG, "init: ");
-        requestData();
-        
-
     }
 
     public void requestData(){
@@ -171,5 +175,20 @@ public class DonateFragment extends Fragment {
                 viewModel.getReqDataList().removeObservers(requireActivity());
             }
         });
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewModel.getReqDataList().removeObservers(getActivity());
+
+    }
+
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        viewModel.getReqDataList().removeObservers(requireActivity());
     }
 }
