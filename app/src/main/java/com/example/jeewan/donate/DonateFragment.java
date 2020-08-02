@@ -103,7 +103,7 @@ public class DonateFragment extends Fragment {
                                 });
                     }
                 }, 200);
-                viewModel.getReqDataListWithCriteria(search_criteria,charSequence.toString()).removeObservers(getActivity());
+                
 
             }
 
