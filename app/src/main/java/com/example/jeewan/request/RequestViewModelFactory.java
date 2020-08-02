@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.jeewan.profile.ProfileViewModel;
-
 public class RequestViewModelFactory implements ViewModelProvider.Factory {
     String name, reqtype, bgroup, amount, date, hospitalname, city, phoneno, description;
 
