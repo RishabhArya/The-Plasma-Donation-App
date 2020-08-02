@@ -10,15 +10,121 @@
       "client_info": {
         "mobilesdk_app_id": "1:331811609962:android:27fa11db9764bc8d065913",
         "android_client_info": {
+          "package_name": "com.example.jeewan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331811609962-siogca4trfsq9kv6cka92113kgruls8a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeewan",
+            "certificate_hash": "4b76ea4253a10f4866d4528ea2f10b6b00b467c2"
+          }
+        },
+        {
+          "client_id": "331811609962-4k3t2bbjg67ln56ecdee8is8fjjdiqs8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeewan",
+            "certificate_hash": "ab62d6b18ff6fce4e1408b7c44a7b71b02719c43"
+          }
+        },
+        {
+          "client_id": "331811609962-7tdk7v6rsk996hnbqkih4466kf51ch2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jeewan",
+            "certificate_hash": "d528e7ddd2255812f0c08c0ccc1b770eb19e39de"
+          }
+        },
+        {
+          "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVA6SKvyQCI3YGgE8NGC7heF32tf-G0z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331811609962:android:018fa9b4e548e3e2065913",
+        "android_client_info": {
           "package_name": "com.plasmadonation.jeewan"
         }
       },
       "oauth_client": [
         {
-          "client_id": "331811609962-7tdk7v6rsk996hnbqkih4466kf51ch2u.apps.googleusercontent.com",
+          "client_id": "331811609962-8cr9kmervjp8hvcom251u6qe82hr9cvk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.plasmadonation.jeewan",
+            "certificate_hash": "bdbddde1204e71adff8d2d207b46a7affa146a01"
+          }
+        },
+        {
+          "client_id": "331811609962-kqsuhrqdl39vajn7jp811reguj6j3fa7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plasmadonation.jeewan",
+            "certificate_hash": "124172d3b6fdd8ee92268c5c2c41c33d5ebf9d55"
+          }
+        },
+        {
+          "client_id": "331811609962-ranq52gtajdhlu0qt3tlafnsti64houf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plasmadonation.jeewan",
+            "certificate_hash": "d528e7ddd2255812f0c08c0ccc1b770eb19e39de"
+          }
+        },
+        {
+          "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVA6SKvyQCI3YGgE8NGC7heF32tf-G0z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331811609962-unq91517sudjo2ph780f459ifonb4f09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331811609962:android:cbd90431dd53cc19065913",
+        "android_client_info": {
+          "package_name": "com.theplasmadonation.jeewan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331811609962-poraa7pdktmvlfkrq974hfn457j9fjak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theplasmadonation.jeewan",
             "certificate_hash": "d528e7ddd2255812f0c08c0ccc1b770eb19e39de"
           }
         },

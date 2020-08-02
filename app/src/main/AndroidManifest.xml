@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.plasmadonation.jeewan">
+    package="com.theplasmadonation.jeewan">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -13,19 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.plasmadonation.jeewan.menuIeams.FeedbackSubmitted"></activity>
-        <activity android:name="com.plasmadonation.jeewan.menuIeams.AboutUs" />
-        <activity android:name="com.plasmadonation.jeewan.menuIeams.Send_Feedback" />
-        <activity android:name="com.plasmadonation.jeewan.onboarding.screens.OnBoarding" />
-        <activity android:name="com.plasmadonation.jeewan.profile.ProfileForm" />
-        <activity android:name="com.plasmadonation.jeewan.MainScreenActivity" />
-        <activity android:name="com.plasmadonation.jeewan.authentication.loginginscreen" />
-        <activity android:name="com.plasmadonation.jeewan.authentication.signup" />
-        <activity android:name="com.plasmadonation.jeewan.authentication.ManageOtp" />
+        <activity android:name="com.theplasmadonation.jeewan.menuIeams.FeedbackSubmitted"></activity>
+        <activity android:name="com.theplasmadonation.jeewan.menuIeams.AboutUs" />
+        <activity android:name="com.theplasmadonation.jeewan.menuIeams.Send_Feedback" />
+        <activity android:name="com.theplasmadonation.jeewan.onboarding.screens.OnBoarding" />
+        <activity android:name="com.theplasmadonation.jeewan.profile.ProfileForm" />
+        <activity android:name="com.theplasmadonation.jeewan.MainScreenActivity" />
+        <activity android:name="com.theplasmadonation.jeewan.authentication.loginginscreen" />
+        <activity android:name="com.theplasmadonation.jeewan.authentication.signup" />
+        <activity android:name="com.theplasmadonation.jeewan.authentication.ManageOtp" />
         <activity
-            android:name="com.plasmadonation.jeewan.authentication.Mainlogin"
+            android:name="com.theplasmadonation.jeewan.authentication.Mainlogin"
             android:label="home" />
-        <activity android:name="com.plasmadonation.jeewan.SplashActivity">
+        <activity android:name="com.theplasmadonation.jeewan.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

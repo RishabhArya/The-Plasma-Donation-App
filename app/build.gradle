@@ -10,11 +10,11 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.plasmadonation.jeewan"
+        applicationId "com.theplasmadonation.jeewan"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "2.10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
