@@ -161,7 +161,7 @@
 
                 <TextView
                     android:id="@+id/india_recovered_tvstats"
-                    android:layout_width="36dp"
+                    android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"

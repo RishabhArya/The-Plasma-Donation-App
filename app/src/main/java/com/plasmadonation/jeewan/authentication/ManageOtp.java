@@ -40,6 +40,7 @@ public class ManageOtp extends AppCompatActivity {
     TextView Heading;
 
     ProgressBar mProgressBar;
+    ProgressBar mProgressBar2;
     CountDownTimer mCountDownTimer;
     int i=0;
     @Override
@@ -53,6 +54,7 @@ public class ManageOtp extends AppCompatActivity {
         otp = (EditText)findViewById(R.id.editTextOTP);
         verify = (Button)findViewById(R.id.butVerify);
         mAuth = FirebaseAuth.getInstance();
+        mProgressBar2=findViewById(R.id.manageotp_pbar);
 
         //method call to send otp
         initateotp();
@@ -61,6 +63,7 @@ public class ManageOtp extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProgressBar2.setVisibility(View.VISIBLE);
                 //get code entered by user
                 String code = otp.getText().toString().trim();
                 verify.setEnabled(false);
@@ -95,6 +98,7 @@ public class ManageOtp extends AppCompatActivity {
                 //Do what you want
                 i++;
                 mProgressBar.setProgress(100);
+                mCountDownTimer.cancel();
                 Intent intent = new Intent(ManageOtp.this, Mainlogin.class);
                 startActivity(intent);
                 finish();
@@ -127,6 +131,8 @@ public class ManageOtp extends AppCompatActivity {
                         if (code != null) {
                             //set code in edittextotp
                             otp.setText(code);
+                            mProgressBar2.setVisibility(View.VISIBLE);
+                            verify.setEnabled(false);
                             //call method for signin with sent code
                             signInWithPhoneAuthCredential(phoneAuthCredential);
                         }
@@ -155,11 +161,13 @@ public class ManageOtp extends AppCompatActivity {
                                     if (profileModel!= null) {
                                         // move to MainActivity activity
                                         Intent intent = new Intent(ManageOtp.this, MainScreenActivity.class);
+                                        mCountDownTimer.cancel();
                                         startActivity(intent);
                                     }
                                     else{
                                         // move Profile activity
                                         Intent intent = new Intent(ManageOtp.this, ProfileForm.class);
+                                        mCountDownTimer.cancel();
                                         startActivity(intent);
                                     }
                                 }
@@ -169,6 +177,7 @@ public class ManageOtp extends AppCompatActivity {
                             // Sign in failed, display error message
                             Toast.makeText(ManageOtp.this, "Sigh In Code Error", Toast.LENGTH_SHORT).show();
                             verify.setEnabled(true);
+                            mProgressBar2.setVisibility(View.INVISIBLE);
                         }
                     }
                 });
