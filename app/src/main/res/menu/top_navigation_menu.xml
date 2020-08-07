@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_feedback"
-        android:icon="@drawable/ic_review"
+        android:icon="@drawable/ic_feedback"
         android:title="Feedback"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/nav_aboutus"
-        android:icon="@drawable/ic_info"
+        android:icon="@drawable/ic_information"
         android:title="Aboutus"
         app:showAsAction="ifRoom"/>
 </menu>

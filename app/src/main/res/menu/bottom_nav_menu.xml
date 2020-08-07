@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/nav_donate"
-        android:icon="@drawable/ic_donate_main"
+        android:icon="@drawable/ic_blood_drop"
         android:title="Donate" />
     <item android:title="Request"
-        android:icon="@drawable/ic_heart"
+        android:icon="@drawable/ic_donate"
         android:id="@+id/nav_request"/>
     <item android:title="Covid Updates"
         android:icon="@drawable/covid_virus_img"
