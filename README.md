@@ -8,3 +8,9 @@ As an initiative taken by the government which motivates Students for providing 
 People who have fully recovered from COVID-19 have antibodies in their plasma that can attack the virus. This convalescent plasma is being evaluated as a treatment for patients with serious or immediately life-threatening COVID-19 infections, or those judged by a healthcare provider to be at high risk of progression to severe or life-threatening disease.
 
 <img src = "/Extras/splash.jpeg" width="250" height="500"/> <img src = "/Extras/info.jpeg" width="250" height="500"/> 
+
+### Request
+In the Request Section.A person can request for plasma in there city.This Includes basic details look like Name,Date,Phone Number,Hospital Name.
+- ViewModel
+- LiveData
+<img src = "/Extras/form.jpg" width="250" height="500"/> 
