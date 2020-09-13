@@ -14,3 +14,12 @@ In the Request Section.A person can request for plasma in there city.This Includ
 - ViewModel
 - LiveData
 <img src = "/Extras/form.jpg" width="250" height="500"/> 
+
+### Donate 
+
+This Section includes all the Request for the plasma which can be filtered on the basis of BloodGroup and City.
+- RxJava
+- ViewModel
+- LiveData
+- Cloud FireStore
+<img src = "/Extras/recievers.jpg" width="250" height="500"/> 
