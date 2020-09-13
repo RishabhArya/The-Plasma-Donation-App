@@ -4,6 +4,7 @@
 
 This app can be considered as a contribution of its developers towards the medical unit of the country as well as towards humanity. 
 
-Jeewan -The Plasma Donation App would help Donors, as well as patients in need of plasma and blood. Jeewan, would allow you to search Plasma Donors within your city and having a specific Blood Group.
+As an initiative taken by the government which motivates Students for providing Support for the pandemic. Jeewan - The Plasma Donation App would help Donors, as well as patients in need of plasma Jeewan, would allow you to search Plasma Donors within your city and having a specific Blood Group.
+People who have fully recovered from COVID-19 have antibodies in their plasma that can attack the virus. This convalescent plasma is being evaluated as a treatment for patients with serious or immediately life-threatening COVID-19 infections, or those judged by a healthcare provider to be at high risk of progression to severe or life-threatening disease.
 
-This app is as successful as people on the platform, if you are a donor or if you are a recipient get your self registered on the app and help the society. We are all in this together and we will win as a communi
+<img src = "/Extras/W" width="235" height="500"/> <img src = "/Images/home_light.png" width="235" height="500"/><img src = "/Images/home_dark.png" width="235" height="500"/>
