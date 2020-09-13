@@ -23,4 +23,5 @@ This Section includes all the Request for the plasma which can be filtered on th
 - ViewModel
 - LiveData
 - Cloud FireStore
-<img src = "/Extras/recievers.jpg" width="250" height="500"/><img src = "/Extras/rec1.jpg" width="250" height="500"/><img src = "/Extras/rec2.jpg" width="250" height="500"/> 
+<br>
+<img src = "/Extras/recievers.jpg" width="250" height="500"/><img src = "/Extras/rec1.jpeg" width="250" height="500"/><img src = "/Extras/rec2.jpeg" width="250" height="500"/> 
