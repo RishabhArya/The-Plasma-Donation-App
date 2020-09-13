@@ -37,3 +37,10 @@ Section to see the numbers of covid-19 cases in india.
 <img src = "/Extras/analytics.jpg" width="250" height="500"/>
 
 
+
+## Maintainers and Developers
+ - [Nilesh Teji](https://github.com/nileshteji)
+ - [Rishabh Arya](https://github.com/RishabhArya)
+ - [Parimal Kesan](https://github.com/parimalkesan)
+
+
