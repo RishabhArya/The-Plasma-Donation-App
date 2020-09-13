@@ -25,3 +25,15 @@ This Section includes all the Request for the plasma which can be filtered on th
 - Cloud FireStore
 
 <img src = "/Extras/recievers.jpg" width="250" height="500"/> <img src = "/Extras/rec1.jpeg" width="250" height="500"/> <img src = "/Extras/rec2.jpeg" width="250" height="500"/> 
+
+### Covid Analytics
+
+Section to see the numbers of covid-19 cases in india.
+
+- Retrofit
+- LiveData
+- ViewModel
+- Gson
+<img src = "/Extras/analytics.jpg" width="250" height="500"/>
+
+
